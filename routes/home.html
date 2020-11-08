@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      }
+      h1 {
+      margin: 0;
+      font-weight: 400;
+      }
+      h3 {
+      margin: 12px 0;
+      color: #0E4DA4;
+      }
+      .main-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      }
+      fieldset {
+      border: none;
+      border-top: 1px solid #0E4DA4;
+      }
+      .account-details >div >div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      }
+      .account-details >div, input, label {
+      width: 100%;
+      }
+      label {
+      padding: 0 5px;
+      text-align: right;
+      vertical-align: middle;
+      }
+      input {
+      padding: 5px;
+      vertical-align: middle;
+      }
+      button {
+      width: 200px;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px; 
+      border: none;
+      background: #0E4DA4; 
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #0E4DA4;
+      }
+      @media (min-width: 400px) {
+      .account-details >div {
+      width: 40%;
+      }
+      label {
+      width: 40%;
+      }
+      input {
+      width: 60%;
+      }
+      }
+      table.blueTable {
+      border: 1px solid #1C6EA4;
+      background-color: #EEEEEE;
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+    }
+    table.blueTable td, table.blueTable th {
+      border: 1px solid #AAAAAA;
+      padding: 3px 2px;
+    }
+    table.blueTable tbody td {
+      font-size: 13px;
+    }
+    table.blueTable tr:nth-child(even) {
+      background: #D0E4F5;
+    }
+    table.blueTable thead {
+      background: #0E4DA4;
+      background: -moz-linear-gradient(top, #0E4DA4);
+      background: -webkit-linear-gradient(top, #0E4DA4);
+      background: linear-gradient(to bottom, #0E4DA4);
+      border-bottom: 2px solid #444444;
+    }
+    table.blueTable thead th {
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      border-left: 2px solid #D0E4F5;
+    }
+    table.blueTable thead th:first-child {
+      border-left: none;
+    }
+
+    table.blueTable tfoot {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #D0E4F5;
+      background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      border-top: 2px solid #444444;
+    }
+    table.blueTable tfoot td {
+      font-size: 14px;
+    }
+    table.blueTable tfoot .links {
+      text-align: right;
+    }
+    table.blueTable tfoot .links a{
+      display: inline-block;
+      background: #1C6EA4;
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+    <form action="/">
+      <fieldset>
+        <legend>
+          <h3>Minhas reservas</h3>
+        </legend>
+        <div  class="account-details">
+          <table class="blueTable">
+            <thead>
+            <tr>
+            <th>Responsável</th>
+            <th>Veículo</th>
+            <th>Qtd de dias</th>
+            <th>Valor total</th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>Carlos Peres</td>
+            <td>Ford Mustang</td>
+            <td>12</td>
+            <td>R$8.648,00</td>
+            <td>
+              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
+              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
+            </td>
+            </tr>
+            <tr>
+            <td>Maria Antonieta Damasco</td>
+            <td>Ford Mustang</td>
+            <td>6</td>
+            <td>R$4.324,00</td>
+            <td>
+              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
+              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
+            </td>
+            </tr>
+            <tr>
+              <td>João Bosco Silva</td>
+              <td>Lamboghini Aventador</td>
+              <td>10</td>
+              <td>R$12.780,00</td>
+              <td>
+                <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
+                <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
+              </td>
+              </tr>
+            </tbody>
+            </table>
+          <div>
+            <button type="submit" href="/">Nova reserva</button>
+            <button type="submit" href="/">Sair</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    </div> 
+  </body>
+</html>

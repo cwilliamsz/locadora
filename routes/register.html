@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registro</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      }
+      h1 {
+      margin: 0;
+      font-weight: 400;
+      }
+      h3 {
+      margin: 12px 0;
+      color: #0E4DA4;
+      }
+      .main-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      }
+      fieldset {
+      border: none;
+      border-top: 1px solid #0E4DA4;
+      }
+      .account-details, .personal-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .account-details >div, .personal-details >div >div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      }
+      .account-details >div, .personal-details >div, input, label {
+      width: 100%;
+      }
+      label {
+      padding: 0 5px;
+      text-align: right;
+      vertical-align: middle;
+      }
+      input {
+      padding: 5px;
+      vertical-align: middle;
+      }
+      .checkbox {
+      margin-bottom: 10px;
+      }
+      select, .children, .gender, .bdate-block {
+      width: calc(100% + 26px);
+      padding: 5px 0;
+      }
+      select {
+      background: transparent;
+      }
+      .gender input {
+      width: auto;
+      } 
+      .gender label {
+      padding: 0 5px 0 0;
+      } 
+      .bdate-block {
+      display: flex;
+      justify-content: space-between;
+      }
+      .birthdate select.day {
+      width: 35px;
+      }
+      .birthdate select.mounth {
+      width: calc(100% - 94px);
+      }
+      .birthdate input {
+      width: 38px;
+      vertical-align: unset;
+      }
+      .checkbox input, .children input {
+      width: auto;
+      margin: -2px 10px 0 0;
+      }
+      .checkbox a {
+      color: #0E4DA4;
+      }
+      .checkbox a:hover {
+      color: #0E4DA4;
+      }
+      button {
+      width: 200px;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px; 
+      border: none;
+      background: #0E4DA4; 
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #0E4DA4;
+      }
+      @media (min-width: 568px) {
+      .account-details >div, .personal-details >div {
+      width: 50%;
+      }
+      label {
+      width: 40%;
+      }
+      input {
+      width: 60%;
+      }
+      select, .children, .gender, .bdate-block {
+      width: calc(60% + 16px);
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+    <form action="/">
+      <h1>Crie sua conta para efetuar reservas</h1>
+      <fieldset>
+        <legend>
+          <h3>Dados de autenticação</h3>
+        </legend>
+        <div  class="account-details">
+          <div><label>E-mail*</label><input type="text" name="email" required></div>
+          <div><label>Senha*</label><input type="password" name="senha" required></div>
+          <div><label>Repita o e-mail*</label><input type="text" name="email2" required></div>
+          <div><label>Repita a senha*</label><input type="password" name="senha2" required></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <h3>Dados pessoais e de contato</h3>
+        </legend>
+        <div  class="personal-details">
+          <div>
+            <div><label>Nome*</label><input type="text" name="name" required></div>
+            <div><label>Telefone*</label><input type="text" name="phone" required></div>
+            <div><label>CNH*</label><input type="text" name="cnh"></div>
+            <div><label>CPF*</label><input type="text" name="cpf" required></div>
+          </div>
+          <div>
+            <div>
+              <label>Genêro de Nascimento*</label>
+              <div class="gender">
+                <input type="radio" value="none" id="male" name="gender" required/>
+                <label for="male" class="radio">Masculino</label>
+                <input type="radio" value="none" id="female" name="gender" required/>
+                <label for="female" class="radio">Femnino</label>
+              </div>
+            </div>
+            <div class="birthdate">
+              <label>Data de Nascimento*</label>
+              <div class="bdate-block">
+                <select class="day" required>
+                  <option value=""></option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                <select class="mounth" required>
+                  <option value=""></option>
+                  <option value="01">Janeiro</option>
+                  <option value="02">Fevereiro</option>
+                  <option value="03">Março</option>
+                  <option value="04">Abril</option>
+                  <option value="05">Maio</option>
+                  <option value="06">Junho</option>
+                  <option value="07">Julho</option>
+                  <option value="08">Agosto</option>
+                  <option value="09">Setembro</option>
+                  <option value="10">Outubro</option>
+                  <option value="11">Novembro</option>
+                  <option value="12">Dezembro</option>
+                </select>
+                <input type="text" name="year" required>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button type="submit" href="/">Registrar</button>
+          <button type="submit" href="/">Cancelar</button>
+        </div>
+      </fieldset>
+    </form>
+    </div> 
+  </body>
+</html>
