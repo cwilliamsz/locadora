@@ -60,46 +60,6 @@
       padding: 5px;
       vertical-align: middle;
       }
-      .checkbox {
-      margin-bottom: 10px;
-      }
-      select, .children, .gender, .bdate-block {
-      width: calc(100% + 26px);
-      padding: 5px 0;
-      }
-      select {
-      background: transparent;
-      }
-      .gender input {
-      width: auto;
-      } 
-      .gender label {
-      padding: 0 5px 0 0;
-      } 
-      .bdate-block {
-      display: flex;
-      justify-content: space-between;
-      }
-      .birthdate select.day {
-      width: 35px;
-      }
-      .birthdate select.mounth {
-      width: calc(100% - 94px);
-      }
-      .birthdate input {
-      width: 38px;
-      vertical-align: unset;
-      }
-      .checkbox input, .children input {
-      width: auto;
-      margin: -2px 10px 0 0;
-      }
-      .checkbox a {
-      color: #0E4DA4;
-      }
-      .checkbox a:hover {
-      color: #0E4DA4;
-      }
       button {
       width: 200px;
       padding: 10px 0;
@@ -124,11 +84,65 @@
       input {
       width: 60%;
       }
-      select, .children, .gender, .bdate-block {
-      width: calc(60% + 16px);
       }
-      }
-    </style>
+      table.blueTable {
+      border: 1px solid #1C6EA4;
+      background-color: #EEEEEE;
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+    }
+    table.blueTable td, table.blueTable th {
+      border: 1px solid #AAAAAA;
+      padding: 3px 2px;
+    }
+    table.blueTable tbody td {
+      font-size: 13px;
+    }
+    table.blueTable tr:nth-child(even) {
+      background: #D0E4F5;
+    }
+    table.blueTable thead {
+      background: #0E4DA4;
+      background: -moz-linear-gradient(top, #0E4DA4);
+      background: -webkit-linear-gradient(top, #0E4DA4);
+      background: linear-gradient(to bottom, #0E4DA4);
+      border-bottom: 2px solid #444444;
+    }
+    table.blueTable thead th {
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      border-left: 2px solid #D0E4F5;
+    }
+    table.blueTable thead th:first-child {
+      border-left: none;
+    }
+
+    table.blueTable tfoot {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #D0E4F5;
+      background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      border-top: 2px solid #444444;
+    }
+    table.blueTable tfoot td {
+      font-size: 14px;
+    }
+    table.blueTable tfoot .links {
+      text-align: right;
+    }
+    table.blueTable tfoot .links a{
+      display: inline-block;
+      background: #1C6EA4;
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+  </style>
   </head>
   <body>
     <div class="main-block">
@@ -136,7 +150,7 @@
       <h1>Usuários</h1>
       <fieldset>
         <legend>
-          <h3>Usuário</h3>
+          <h3>Criar Usuário</h3>
         </legend>
         <div  class="account-details">
           <div><label>Código</label><input type="text" name="email" required></div>
@@ -144,11 +158,57 @@
           <div><label>Nome*</label><input type="text" name="email2" required></div>
           <div><label>Senha*</label><input type="password" name="senha2" required></div>
         </div>
+      </br>
         <div style="text-align: right;">
           <button type="submit" href="/">Salvar</button>
           &nbsp;
           <button type="submit" href="/">Cancelar</button>
         </div>
+      </br></br>
+      <fieldset>
+        <legend>
+          <h3>Usuários Cadastrados</h3>
+        </legend>
+        <table class="blueTable">
+          <thead>
+          <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>01</td>
+          <td>Carlos Peres</td>
+          <td>carlos.peres@gmail.com</td>
+          <td>
+            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
+            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
+          </td>
+          </tr>
+          <tr>
+          <td>02</td>
+          <td>Maria Antonieta Damasco</td>
+          <td>maria.damasco@outlook.com</td>
+          <td>
+            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
+            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
+          </td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>João Bosco Silva</td>
+            <td>bosco.joao.sv@gmail.com</td>
+            <td>
+              <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
+              <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
+            </td>
+            </tr>
+          </tbody>
+          </table>
+      </fieldset>
       </fieldset>
     </form>
     </div> 
