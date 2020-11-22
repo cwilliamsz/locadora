@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reserva</title>
+    <title>Usuários</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -63,7 +63,7 @@
       .checkbox {
       margin-bottom: 10px;
       }
-      select, .children, .gender, .menu-block {
+      select, .children, .gender, .bdate-block {
       width: calc(100% + 26px);
       padding: 5px 0;
       }
@@ -76,12 +76,18 @@
       .gender label {
       padding: 0 5px 0 0;
       } 
-      .menu-block {
+      .bdate-block {
       display: flex;
       justify-content: space-between;
       }
-      .menu input {
-      width: 40px;
+      .birthdate select.day {
+      width: 35px;
+      }
+      .birthdate select.mounth {
+      width: calc(100% - 94px);
+      }
+      .birthdate input {
+      width: 38px;
       vertical-align: unset;
       }
       .checkbox input, .children input {
@@ -110,16 +116,16 @@
       }
       @media (min-width: 568px) {
       .account-details >div, .personal-details >div {
-      width: 60%;
+      width: 50%;
       }
       label {
-      width: 20%;
+      width: 40%;
       }
       input {
-      width: 80%;
+      width: 60%;
       }
-      select, .children, .gender, .menu-block {
-      width: 200px;
+      select, .children, .gender, .bdate-block {
+      width: calc(60% + 16px);
       }
       }
     </style>
@@ -127,71 +133,22 @@
   <body>
     <div class="main-block">
     <form action="/">
-      <h1>Cadastrar nova reserva</h1>
+      <h1>Usuários</h1>
       <fieldset>
         <legend>
-          <h3>Responsável pela reserva</h3>
+          <h3>Usuário</h3>
         </legend>
         <div  class="account-details">
-          <div><label>Código*</label><input type="text" name="user_code" required></div>
-          <div><label>Nome*</label><input type="text" name="name" required></div>
+          <div><label>Código</label><input type="text" name="email" required></div>
+          <div><label>E-mail*</label><input type="password" name="senha" required></div>
+          <div><label>Nome*</label><input type="text" name="email2" required></div>
+          <div><label>Senha*</label><input type="password" name="senha2" required></div>
         </div>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <h3>Dados da reserva</h3>
-        </legend>
-        <div  class="personal-details">
-          <div>
-            <div class="menu">
-              <label>Marca*</label>
-              <div class="menu-block">
-                <select class="brand" required>
-                  <option value=""></option>
-                  <option value="">Ford</option>
-                  <option value="">Lamborghini</option>
-                </select>
-              </div>
-
-              <label>Modelo*</label>
-              <div class="menu-block">
-                <select class="model" required>
-                  <option value=""></option>
-                  <option value="">Mustang</option>
-                  <option value="">Aventador</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="menu">
-              <label>Ano*</label>
-              <div class="menu-block">
-                <select class="year" required>
-                  <option value=""></option>
-                  <option value="">Ford</option>
-                  <option value="">Lamborghini</option>
-                </select>
-              </div>
-
-              <label>Cor*</label>
-              <div class="menu-block">
-                <select class="color" required>
-                  <option value=""></option>
-                  <option value="">Mustang</option>
-                  <option value="">Aventador</option>
-                </select>
-              </div>
-            </div>
-            <div><label>Retirada*</label><input type="date" name="date_start" required></div>
-            <div><label>Devolução*</label><input type="date" name="date_finish" required></div>
-            <div><label>Valor total</label><input type="text" name="reservationValue" required></div>
-            <div><label>Observações</label><input type="text" name="reservationValue" required></div>
-          </div>
-          <div style="text-align: right;"">
-            <button type="submit" href="/">Reservar</button>
-            &nbsp;
-            <button type="submit" href="/">Cancelar</button>
-          </div>
+        <div style="text-align: right;">
+          <button type="submit" href="/">Salvar</button>
+          &nbsp;
+          <button type="submit" href="/">Cancelar</button>
+        </div>
       </fieldset>
     </form>
     </div> 
