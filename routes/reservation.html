@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reserva</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      }
+      h1 {
+      margin: 0;
+      font-weight: 400;
+      }
+      h3 {
+      margin: 12px 0;
+      color: #0E4DA4;
+      }
+      .main-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      }
+      fieldset {
+      border: none;
+      border-top: 1px solid #0E4DA4;
+      }
+      .account-details, .personal-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .account-details >div, .personal-details >div >div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      }
+      .account-details >div, .personal-details >div, input, label {
+      width: 100%;
+      }
+      label {
+      padding: 0 5px;
+      text-align: right;
+      vertical-align: middle;
+      }
+      input {
+      padding: 5px;
+      vertical-align: middle;
+      }
+      .checkbox {
+      margin-bottom: 10px;
+      }
+      select, .children, .gender, .menu-block {
+      width: calc(100% + 26px);
+      padding: 5px 0;
+      }
+      select {
+      background: transparent;
+      }
+      .gender input {
+      width: auto;
+      } 
+      .gender label {
+      padding: 0 5px 0 0;
+      } 
+      .menu-block {
+      display: flex;
+      justify-content: space-between;
+      }
+      .menu input {
+      width: 40px;
+      vertical-align: unset;
+      }
+      .checkbox input, .children input {
+      width: auto;
+      margin: -2px 10px 0 0;
+      }
+      .checkbox a {
+      color: #0E4DA4;
+      }
+      .checkbox a:hover {
+      color: #0E4DA4;
+      }
+      button {
+      width: 200px;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px; 
+      border: none;
+      background: #0E4DA4; 
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #0E4DA4;
+      }
+      @media (min-width: 568px) {
+      .account-details >div, .personal-details >div {
+      width: 60%;
+      }
+      label {
+      width: 20%;
+      }
+      input {
+      width: 80%;
+      }
+      select, .children, .gender, .menu-block {
+      width: 200px;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+    <form action="/">
+      <h1>Cadastrar nova reserva</h1>
+      <fieldset>
+        <legend>
+          <h3>Responsável pela reserva</h3>
+        </legend>
+        <div  class="account-details">
+          <div><label>Código*</label><input type="text" name="user_code" required></div>
+          <div><label>Nome*</label><input type="text" name="name" required></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <h3>Dados da reserva</h3>
+        </legend>
+        <div  class="personal-details">
+          <div>
+            <div class="menu">
+              <label>Marca*</label>
+              <div class="menu-block">
+                <select class="brand" required>
+                  <option value=""></option>
+                  <option value="">Ford</option>
+                  <option value="">Lamborghini</option>
+                </select>
+              </div>
+
+              <label>Modelo*</label>
+              <div class="menu-block">
+                <select class="model" required>
+                  <option value=""></option>
+                  <option value="">Mustang</option>
+                  <option value="">Aventador</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="menu">
+              <label>Ano*</label>
+              <div class="menu-block">
+                <select class="year" required>
+                  <option value=""></option>
+                  <option value="">Ford</option>
+                  <option value="">Lamborghini</option>
+                </select>
+              </div>
+
+              <label>Cor*</label>
+              <div class="menu-block">
+                <select class="color" required>
+                  <option value=""></option>
+                  <option value="">Mustang</option>
+                  <option value="">Aventador</option>
+                </select>
+              </div>
+            </div>
+            <div><label>Retirada*</label><input type="date" name="date_start" required></div>
+            <div><label>Devolução*</label><input type="date" name="date_finish" required></div>
+            <div><label>Valor total</label><input type="text" name="reservationValue" required></div>
+            <div><label>Observações</label><input type="text" name="reservationValue" required></div>
+          </div>
+          <div style="text-align: right;"">
+            <button type="submit" href="/">Reservar</button>
+            &nbsp;
+            <button type="submit" href="/">Cancelar</button>
+          </div>
+      </fieldset>
+    </form>
+    </div> 
+  </body>
+</html>
