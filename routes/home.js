@@ -5,13 +5,25 @@ var path = require('path');
 
 /* GET Register page. */
 router.get('/', function(req, res, next) {
-  if (request.session.loggedin) {
-      console.log('Welcome back, ' + req.session.username + '!');
-      res.sendFile(__dirname + '/home.html')
+  if (req.session.user) {
+    res.sendFile(__dirname + '/home.html')
   } else {
-      res.send('Please login to view this page!');
+    req.session.error = 'Access denied!';
+    res.redirect('/');
   }
-  res.end();
+});
+
+// Logout
+router.get('/logout', function(req, res, next) {
+  res.clearCookie('user_sid')
+  req.logout()
+  req.session.destroy(function (err) {
+    if (err) {
+      return next(err);
+    } else {
+      return res.redirect('/');
+    }
+  });
 });
 
 module.exports = router;

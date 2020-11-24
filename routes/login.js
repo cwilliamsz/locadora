@@ -10,7 +10,6 @@ var connection = mysql.createConnection({
   database : 'locadora_hands_on_work'
 });
 
-
 /* GET Register page. */
 router.get('/', function(req, res, next) {
   res.sendFile(__dirname + '/login.html')
@@ -25,9 +24,7 @@ router.post('/login', function(request, response) {
   // check if user exists
       connection.query('SELECT * FROM users WHERE email = ? OR username = ? AND password = ?', [username, username, password], function(error, results, fields) {
           if (results.length > 0) {
-              request.session.loggedin = true;
-              request.session.username = username;
-              console.log("success")
+              request.session.user = username;
               response.redirect('/home');
           } else {
               response.send('Incorrect Username and/or Password!');
