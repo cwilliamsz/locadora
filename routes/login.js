@@ -21,7 +21,7 @@ router.post('/login', function(request, response) {
 
   if (username && password) {
     // check if user exists
-    var query = 'SELECT * FROM users WHERE email = ? OR username = ? AND password = ?'
+    var query = 'SELECT * FROM admin WHERE email = ? OR username = ? AND password = ?'
     connection.query(query, [username, username, password], function(error, results, fields) {
         if (results.length > 0) {
             request.session.user = username;
