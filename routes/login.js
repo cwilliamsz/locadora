@@ -10,31 +10,40 @@ var connection = mysql.createConnection({
   database : 'locadora_hands_on_work'
 });
 
-/* GET Register page. */
 router.get('/', function(req, res, next) {
   res.sendFile(__dirname + '/login.html')
 });
 
-// for action
+// Login action
 router.post('/login', function(request, response) {
   var username = request.body.username;
   var password = request.body.password;
-  console.log(username, password)
+
   if (username && password) {
-  // check if user exists
-      connection.query('SELECT * FROM users WHERE email = ? OR username = ? AND password = ?', [username, username, password], function(error, results, fields) {
-          if (results.length > 0) {
-              request.session.user = username;
-              response.redirect('/home');
-          } else {
-              response.send('Incorrect Username and/or Password!');
-          }           
-          response.end();
-      });
+    // check if user exists
+    var query = 'SELECT * FROM users WHERE email = ? OR username = ? AND password = ?'
+    connection.query(query, [username, username, password], function(error, results, fields) {
+        if (results.length > 0) {
+            request.session.user = username;
+            response.redirect('/home');
+        } else {
+            response.send('Incorrect Username and/or Password!');
+        }           
+        response.end();
+    });
   } else {
       response.send('Please enter Username and Password!');
       response.end();
   }
 });
+
+// Logout action
+router.get("/logout", function(req, res) {
+ req.session.destroy(() => {
+   res.redirect("/")
+  });
+
+  req.session = null
+ });
 
 module.exports = router;

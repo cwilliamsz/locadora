@@ -3,9 +3,13 @@ var router = express.Router();
 
 var path = require('path');
 
-/* GET Register page. */
 router.get('/', function(req, res, next) {
-  res.sendFile(__dirname + '/reservation.html')
+  if (req.session.user) {
+    res.sendFile(__dirname + '/reservation.html')
+  } else {
+    req.session.error = 'Access denied!';
+    res.redirect('/');
+  }
 });
 
 module.exports = router;

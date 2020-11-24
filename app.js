@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Endpoints
 app.use('/user', userRouter);
 app.use('/', loginRouter);
+app.use('/logout', loginRouter);
 app.use('/home', homeRouter);
 app.use('/reservation', reservationRouter);
 
