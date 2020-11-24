@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Usuários</title>
+    <title>Veículos</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -147,16 +147,43 @@
   <body>
     <div class="main-block">
     <form action="/">
-      <h1>Usuários</h1>
+      <h1>Veículos</h1>
       <fieldset>
         <legend>
-          <h3>Criar Usuário</h3>
+          <h3>Cadastrar Veículo</h3>
         </legend>
         <div  class="account-details">
-          <div><label>Código</label><input type="text" name="email" required></div>
-          <div><label>E-mail*</label><input type="password" name="senha" required></div>
-          <div><label>Nome*</label><input type="text" name="email2" required></div>
-          <div><label>Senha*</label><input type="password" name="senha2" required></div>
+          <div><label>Código</label><input type="text" name="code" required></div>
+          <div><label>Descrição</label><input type="text" name="description" required></div>
+          <div><label>Modelo</label><div class="menu-block">
+            <select class="model" required>
+              <option value=""></option>
+              <option value="">Anglia</option>
+              <option value="">Bel Air</option>
+              <option value="">Chevette</option>
+              <option value="">Cobra</option>
+              <option value="">Corvette</option>
+              <option value="">Escort</option>
+              <option value="">Fiorino</option>
+              <option value="">Fusca</option>
+              <option value="">Opala Diplomata</option>
+              <option value="">Panorama</option>            
+            </select></div>
+        </div>
+          <div><label>Cor</label><div class="menu-block">
+              <select class="model" required>
+                <option value=""></option>
+                <option value="">Azul Claro</option>
+                <option value="">Azul Esuro</option>
+                <option value="">Branco</option>
+                <option value="">Cinza</option>
+                <option value="">Prata</option>
+                <option value="">Preto</option>
+                <option value="">Vermelho</option>
+              </select></div>
+          </div>
+          <div><label>Ano</label><input type="text" name="year" required></div>
+          <div><label>Observações</label><input type="text" name="observation" required></div>
         </div>
       </br>
         <div style="text-align: right;">
@@ -167,31 +194,40 @@
       </br></br>
       <fieldset>
         <legend>
-          <h3>Usuários Cadastrados</h3>
+          <h3>Veículos Cadastrados</h3>
         </legend>
         <table class="blueTable">
           <thead>
           <tr>
           <th>Código</th>
-          <th>Nome</th>
-          <th>E-mail</th>
-          <th></th>
+          <th>Modelo</th>
+          <th>Descrição</th>
+          <th>Ano</th>
+          <th>Cor</th>
+          <th>Observação</th>
+          <th>Ação</th>
           </tr>
           </thead>
           <tbody>
           <tr>
           <td>01</td>
-          <td>Carlos Peres</td>
-          <td>carlos.peres@gmail.com</td>
+          <td>Anglia</td>
+          <td>4 portas, airbag dianteiro, freio ABS e usado</td>
+          <td>1939</td>
+          <td>Azul claro</td>
+          <td>Carro de colecionador</td>
           <td>
             <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
             <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
           </td>
           </tr>
           <tr>
-          <td>02</td>
-          <td>Maria Antonieta Damasco</td>
-          <td>maria.damasco@outlook.com</td>
+            <td>02</td>
+            <td>Escort</td>
+            <td>2 portas, freio ABS e usado</td>
+            <td>1980</td>
+            <td>Verde</td>
+            <td>Carro de colecionador</td>
           <td>
             <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
             <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
@@ -199,8 +235,11 @@
           </tr>
           <tr>
             <td>03</td>
-            <td>João Bosco Silva</td>
-            <td>bosco.joao.sv@gmail.com</td>
+            <td>Cobra</td>
+            <td>2 portas, airbag dianteiro, conversível, peças originais e usado</td>
+            <td>1965</td>
+            <td>Vermelho</td>
+            <td>Carro de colecionador</td>
             <td>
               <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
               <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
