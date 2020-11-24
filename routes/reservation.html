@@ -185,12 +185,12 @@
             <div><label>Retirada*</label><input type="date" name="date_start" required></div>
             <div><label>Devolução*</label><input type="date" name="date_finish" required></div>
             <div><label>Valor total</label><input type="text" name="reservationValue" required></div>
-            <div><label>Observações</label><input type="text" name="reservationValue" required></div>
+            <div><label>Observações</label><input type="text" name="reservationValue"></div>
           </div>
           <div style="text-align: right;"">
             <button type="submit" href="/">Reservar</button>
             &nbsp;
-            <button type="submit" href="/">Cancelar</button>
+            <button type="cancel" onclick="window.location='/home';return false;">Cancelar</button>
           </div>
       </fieldset>
     </form>
