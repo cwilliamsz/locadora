@@ -15,7 +15,7 @@ var reservationRouter = require('./routes/reservation');
 var app = express();
 
 app.use(session({
-    secret: 'secret',
+    secret: 'fjweiufh93ghbfierifghiebfbowebbfuiuiwrwbno7998re',
     resave: true,
     saveUninitialized: true
 }));
