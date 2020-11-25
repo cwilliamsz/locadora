@@ -23,9 +23,8 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 // Endpoints
-app.use('/user', userRouter);
 app.use('/', loginRouter);
-app.use('/logout', loginRouter);
+app.use('/user', userRouter);
 app.use('/home', homeRouter);
 app.use('/reservation', reservationRouter);
 
