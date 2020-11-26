@@ -3,4 +3,4 @@ sessionConfig = {
     resave: true,
     saveUninitialized: true
 } 
-module.exports = sessionConfig;
+module.exports = sessionConfig
