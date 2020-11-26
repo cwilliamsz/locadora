@@ -1,14 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
 var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'locadora_hands_on_work'
-});
 
 router.get('/', function(req, res, next) {
   res.sendFile(__dirname + '/login.html')
@@ -20,6 +12,13 @@ router.post('/login', function(request, response) {
   var password = request.body.password;
 
   if (username && password) {
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      database : 'locadora_hands_on_work'
+    });
+    
     // check if user exists
     var query = 'SELECT * FROM admin WHERE email = ? OR username = ? AND password = ?'
     connection.query(query, [username, username, password], function(error, results, fields) {
