@@ -23,7 +23,23 @@ router.post('/create', function(request, response) {
 
     db.query(sql, user, function (err, data) { 
         if (err) throw err
-          console.log("User dat is inserted successfully ") 
+          console.log("User data is inserted successfully ") 
+          response.redirect('/user')
+    })
+  } else {
+    request.session.error = 'Access denied!'
+    response.redirect('/')
+  }
+})
+
+router.get('/delete/:id', function(request, response) {
+  if (request.session.user) {
+    const userId = request.params.id
+    var sql = 'DELETE FROM users WHERE id = ?'
+
+    db.query(sql, userId, function (err, data) { 
+        if (err) throw err
+          console.log("User data is deleted successfully ") 
           response.redirect('/user')
     })
   } else {

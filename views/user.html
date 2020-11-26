@@ -189,8 +189,8 @@
             <td width="60" align="center"><%=data.code %></td>
             <td><%=data.name %></td>
             <td><%=data.email %></td>
-            <td width="60"><button type="submit" formaction="/users/edit/<%=data.id%>" style="background-color:orange">Editar</button></td>
-            <td width="60"><button type="submit" formaction="/users/delete/<%=data.id%>" style="background-color:red">Deletar</button></td>
+            <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%=data.id%>'" style="background-color:orange">Editar</button></td>
+            <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%=data.id%>'" style="background-color:red">Deletar</button></td>
         </tr>
         <%  i++; }) %>
         <% } else { %>
