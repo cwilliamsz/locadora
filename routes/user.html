@@ -146,29 +146,34 @@
   </head>
   <body>
     <div class="main-block">
-    <form action="/">
+    <form action="/user/create" method="POST">
       <h1>Usuários</h1>
       <fieldset>
         <legend>
           <h3>Criar Usuário</h3>
         </legend>
         <div  class="account-details">
-          <div><label>Código</label><input type="text" name="email" required></div>
-          <div><label>E-mail*</label><input type="password" name="senha" required></div>
-          <div><label>Nome*</label><input type="text" name="email2" required></div>
-          <div><label>Senha*</label><input type="password" name="senha2" required></div>
+          <div><label>Código</label><input type="text" name="code" required></div>
+          <div><label>E-mail*</label><input type="text" name="email" required></div>
+          <div><label>Nome*</label><input type="text" name="name" required></div>
+          <div><label>Senha*</label><input type="password" name="password" required></div>
         </div>
       </br>
         <div style="text-align: right;">
           <button type="submit" href="/">Salvar</button>
           &nbsp;
-          <button type="submit" href="/">Cancelar</button>
+          <button type="cancel" href="/">Cancelar</button>
         </div>
-      </br></br>
+      </fieldset>
+    </form>
+    </br></br>
+    </div> 
+    <div>
       <fieldset>
         <legend>
           <h3>Usuários Cadastrados</h3>
         </legend>
+      </br>
         <table class="blueTable">
           <thead>
           <tr>
@@ -208,9 +213,7 @@
             </tr>
           </tbody>
           </table>
-      </fieldset>
-      </fieldset>
-    </form>
-    </div> 
+        </fieldset>
+    </div>
   </body>
 </html>
