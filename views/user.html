@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home</title>
+    <title>Usuários</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -38,12 +38,17 @@
       border: none;
       border-top: 1px solid #0E4DA4;
       }
-      .account-details >div >div {
+      .account-details, .personal-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .account-details >div, .personal-details >div >div {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
       }
-      .account-details >div, input, label {
+      .account-details >div, .personal-details >div, input, label {
       width: 100%;
       }
       label {
@@ -69,9 +74,9 @@
       button:hover {
       background: #0E4DA4;
       }
-      @media (min-width: 400px) {
-      .account-details >div {
-      width: 40%;
+      @media (min-width: 568px) {
+      .account-details >div, .personal-details >div {
+      width: 50%;
       }
       label {
       width: 40%;
@@ -137,82 +142,64 @@
       padding: 2px 8px;
       border-radius: 5px;
     }
-    </style>
+  </style>
   </head>
   <body>
     <div class="main-block">
-    <form action="/">
+      <form action="/user/create" method="POST">
+        <h1>Usuários</h1>
+        <fieldset>
+          <legend>
+            <h3>Criar Usuário</h3>
+          </legend>
+          <div  class="account-details">
+            <div><label>Código</label><input type="text" name="code" required></div>
+            <div><label>E-mail*</label><input type="text" name="email" required></div>
+            <div><label>Nome*</label><input type="text" name="name" required></div>
+            <div><label>Senha*</label><input type="password" name="password" required></div>
+          </div></br>
+          <div style="text-align: right;">
+            <button type="submit" href="/">Salvar</button>
+            &nbsp;
+            <button type="cancel" href="/">Cancelar</button>
+          </div>
+        </fieldset>
+      </form>
+    </div></br></br>
+
+    <div>
       <fieldset>
         <legend>
-          <h3>Reservas</h3>
-        </legend>
-        <div  class="account-details">
-          <table class="blueTable">
-            <thead>
-            <tr>
-            <th>Usuário</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Cor</th>
-            <th>Ano</th>
-            <th>Retirada</th>
-            <th>Entrega</th>
-            <th>Observação</th>
+          <h3>Usuários Cadastrados</h3>
+        </legend></br>
+        <table class="blueTable">
+          <tr height="40" align="center">
+            <th>Código</th>
+            <th>Nome</th>
+            <th>E-mail</th>
             <th></th>
-            </tr>
-            </thead>
-            <tbody>
+            <th></th>
+        </tr>
+        <%
+        if(userData.length!=0){
+        var i=1;
+        userData.forEach(function(data){
+        %>
+        <tr>
+            <td width="60" align="center"><%=data.code %></td>
+            <td><%=data.name %></td>
+            <td><%=data.email %></td>
+            <td width="60"><button type="submit" formaction="/users/edit/<%=data.id%>" style="background-color:orange">Editar</button></td>
+            <td width="60"><button type="submit" formaction="/users/delete/<%=data.id%>" style="background-color:red">Deletar</button></td>
+        </tr>
+        <%  i++; }) %>
+        <% } else { %>
             <tr>
-            <td>Carlos Peres</td>
-            <td>Ford</td>
-            <td>Mustang</td>
-            <td>Preto</td>
-            <td>2020</td>
-            <td>21/11/2010</td>
-            <td>10/12/2020</td>
-            <td>Teste observação</td>
-            <td>
-              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
-            </td>
+                <td colspan="7">No Data Found</td>
             </tr>
-            <tr>
-            <td>Maria Antonieta Damasco</td>
-            <td>Ford</td>
-            <td>Mustang</td>
-            <td>Amarelo</td>
-            <td>2020</td>
-            <td>28/11/2010</td>
-            <td>01/12/2020</td>
-            <td>Teste observação</td>
-            <td>
-              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
-            </td>
-            </tr>
-            <tr>
-              <td>João Bosco Silva</td>
-              <td>Lamboghini</td>
-              <td>Aventador</td>
-              <td>Vermelho</td>
-              <td>2020</td>
-              <td>01/12/2010</td>
-              <td>08/12/2020</td>
-              <td>Teste observação</td>
-              <td>
-                <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-                <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
-              </td>
-              </tr>
-            </tbody>
-            </table>
-          <div>
-            <button type="submit" formaction="/reservation">Nova reserva</button>
-            <button type="submit" formaction="/logout">Sair</button>
-          </div>
-        </div>
+        <% } %>
+        </table>
       </fieldset>
-    </form>
-    </div> 
+    </div>
   </body>
 </html>

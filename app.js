@@ -25,6 +25,9 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 // Endpoints
 app.use('/', loginRouter)
 app.use('/user', userRouter)
@@ -32,15 +35,15 @@ app.use('/home', homeRouter)
 app.use('/reservation', reservationRouter)
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(request, response, next) {
   next(createError(404))
 })
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, request, response, next) {
   console.log(err.status, err)
-  res.status(err.status || 500)
-  res.json({
+  response.status(err.status || 500)
+  response.json({
     message: err.message,
     error: err
   })

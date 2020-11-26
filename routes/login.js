@@ -1,9 +1,11 @@
 var express = require('express')
 var router = express.Router()
+var path = require('path')
+
 const db = require('../config/connection')
 
-router.get('/', function(req, res, next) {
-  res.sendFile(__dirname + '/login.html')
+router.get('/', function(request, response, next) {
+  response.sendFile(path.join(__dirname, '../views', 'login.html'))
 })
 
 // Login action
@@ -30,12 +32,12 @@ router.post('/login', function(request, response) {
 })
 
 // Logout action
-router.get("/logout", function(req, res) {
- req.session.destroy(() => {
-   res.redirect("/")
+router.get("/logout", function(request, response) {
+  request.session.destroy(() => {
+    response.redirect("/")
   })
 
-  req.session = null
+  request.session = null
  })
 
 module.exports = router

@@ -1,14 +1,13 @@
 var express = require('express')
 var router = express.Router()
-
 var path = require('path')
 
-router.get('/', function(req, res, next) {
-  if (req.session.user) {
-    res.sendFile(__dirname + '/reservation.html')
+router.get('/', function(request, response, next) {
+  if (request.session.user) {
+    response.sendFile(path.join(__dirname, '../views', 'reservation.html'))
   } else {
-    req.session.error = 'Access denied!'
-    res.redirect('/')
+    request.session.error = 'Access denied!'
+    response.redirect('/')
   }
 })
 

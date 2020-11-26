@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Usuários</title>
+    <title>Home</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -38,17 +38,12 @@
       border: none;
       border-top: 1px solid #0E4DA4;
       }
-      .account-details, .personal-details {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      }
-      .account-details >div, .personal-details >div >div {
+      .account-details >div >div {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
       }
-      .account-details >div, .personal-details >div, input, label {
+      .account-details >div, input, label {
       width: 100%;
       }
       label {
@@ -74,9 +69,9 @@
       button:hover {
       background: #0E4DA4;
       }
-      @media (min-width: 568px) {
-      .account-details >div, .personal-details >div {
-      width: 50%;
+      @media (min-width: 400px) {
+      .account-details >div {
+      width: 40%;
       }
       label {
       width: 40%;
@@ -142,78 +137,82 @@
       padding: 2px 8px;
       border-radius: 5px;
     }
-  </style>
+    </style>
   </head>
   <body>
     <div class="main-block">
-    <form action="/user/create" method="POST">
-      <h1>Usuários</h1>
+    <form action="/">
       <fieldset>
         <legend>
-          <h3>Criar Usuário</h3>
+          <h3>Reservas</h3>
         </legend>
         <div  class="account-details">
-          <div><label>Código</label><input type="text" name="code" required></div>
-          <div><label>E-mail*</label><input type="text" name="email" required></div>
-          <div><label>Nome*</label><input type="text" name="name" required></div>
-          <div><label>Senha*</label><input type="password" name="password" required></div>
-        </div>
-      </br>
-        <div style="text-align: right;">
-          <button type="submit" href="/">Salvar</button>
-          &nbsp;
-          <button type="cancel" href="/">Cancelar</button>
+          <table class="blueTable">
+            <thead>
+            <tr>
+            <th>Usuário</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Cor</th>
+            <th>Ano</th>
+            <th>Retirada</th>
+            <th>Entrega</th>
+            <th>Observação</th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>Carlos Peres</td>
+            <td>Ford</td>
+            <td>Mustang</td>
+            <td>Preto</td>
+            <td>2020</td>
+            <td>21/11/2010</td>
+            <td>10/12/2020</td>
+            <td>Teste observação</td>
+            <td>
+              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
+              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
+            </td>
+            </tr>
+            <tr>
+            <td>Maria Antonieta Damasco</td>
+            <td>Ford</td>
+            <td>Mustang</td>
+            <td>Amarelo</td>
+            <td>2020</td>
+            <td>28/11/2010</td>
+            <td>01/12/2020</td>
+            <td>Teste observação</td>
+            <td>
+              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
+              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
+            </td>
+            </tr>
+            <tr>
+              <td>João Bosco Silva</td>
+              <td>Lamboghini</td>
+              <td>Aventador</td>
+              <td>Vermelho</td>
+              <td>2020</td>
+              <td>01/12/2010</td>
+              <td>08/12/2020</td>
+              <td>Teste observação</td>
+              <td>
+                <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
+                <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
+              </td>
+              </tr>
+            </tbody>
+            </table>
+          <div>
+            <button type="submit" formaction="/reservation">Nova reserva</button></br>
+            <button type="submit" formaction="/logout">Sair</button>
+          </div>
         </div>
       </fieldset>
     </form>
-    </br></br>
     </div> 
-    <div>
-      <fieldset>
-        <legend>
-          <h3>Usuários Cadastrados</h3>
-        </legend>
-      </br>
-        <table class="blueTable">
-          <thead>
-          <tr>
-          <th>Código</th>
-          <th>Nome</th>
-          <th>E-mail</th>
-          <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-          <td>01</td>
-          <td>Carlos Peres</td>
-          <td>carlos.peres@gmail.com</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-          <td>02</td>
-          <td>Maria Antonieta Damasco</td>
-          <td>maria.damasco@outlook.com</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>03</td>
-            <td>João Bosco Silva</td>
-            <td>bosco.joao.sv@gmail.com</td>
-            <td>
-              <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-            </td>
-            </tr>
-          </tbody>
-          </table>
-        </fieldset>
-    </div>
   </body>
 </html>
