@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Usuários</title>
+    <title>Modelos</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -147,16 +147,20 @@
   <body>
     <div class="main-block">
     <form action="/">
-      <h1>Usuários</h1>
+      <h1>Modelos</h1>
       <fieldset>
         <legend>
-          <h3>Criar Usuário</h3>
+          <h3>Criar Modelos</h3>
         </legend>
         <div  class="account-details">
-          <div><label>Código</label><input type="text" name="email" required></div>
-          <div><label>E-mail*</label><input type="password" name="senha" required></div>
-          <div><label>Nome*</label><input type="text" name="email2" required></div>
-          <div><label>Senha*</label><input type="password" name="senha2" required></div>
+          <div><label>Código</label><input type="text" name="codigo do modelo" required></div>
+            <div><label>Código da marca*</label><select name="select Model">
+            <option value="Ford">Ford</option> 
+            <option value="Fiat">Fiat</option>
+            <option value="Lamborghini">Lamborghini</option>
+          </select></div>
+          <div><label>Descrição</label><input type="text" name="email2" required></div>
+          
         </div>
       </br>
         <div style="text-align: right;">
@@ -167,22 +171,22 @@
       </br></br>
       <fieldset>
         <legend>
-          <h3>Usuários Cadastrados</h3>
+          <h3>Modelos Cadastrados</h3>
         </legend>
         <table class="blueTable">
           <thead>
           <tr>
           <th>Código</th>
-          <th>Nome</th>
-          <th>E-mail</th>
+          <th>Código da Marca</th>
+          <th>Descrição</th>
           <th></th>
           </tr>
           </thead>
           <tbody>
           <tr>
           <td>01</td>
-          <td>Carlos Peres</td>
-          <td>carlos.peres@gmail.com</td>
+          <td>Fiat</td>
+          <td>Toro</td>
           <td>
             <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
             <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
@@ -190,8 +194,8 @@
           </tr>
           <tr>
           <td>02</td>
-          <td>Maria Antonieta Damasco</td>
-          <td>maria.damasco@outlook.com</td>
+          <td>Ford</td>
+          <td>Mustang</td>
           <td>
             <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
             <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
@@ -199,8 +203,8 @@
           </tr>
           <tr>
             <td>03</td>
-            <td>João Bosco Silva</td>
-            <td>bosco.joao.sv@gmail.com</td>
+            <td>Lamborghini</td>
+            <td>Aventador</td>
             <td>
               <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
               <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
