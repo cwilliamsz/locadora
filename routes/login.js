@@ -5,7 +5,12 @@ var path = require('path')
 const db = require('../config/connection')
 
 router.get('/', function(request, response, next) {
-  response.sendFile(path.join(__dirname, '../views', 'login.html'))
+  if (request.session.user) {
+    response.sendFile(path.join(__dirname, '../views', 'home.html'))
+  } else {
+    request.session.error = 'Access denied!'
+    response.sendFile(path.join(__dirname, '../views', 'login.html'))
+  }
 })
 
 // Login action
