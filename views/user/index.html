@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 <html>
   <head>
-    <title>Veículos</title>
+    <title>Usuários</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -143,113 +144,70 @@
       border-radius: 5px;
     }
   </style>
+  <script>
+    function showPassword() {
+      var x = document.getElementById("passwordInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    } 
+  </script>
   </head>
   <body>
     <div class="main-block">
-    <form action="/">
-      <h1>Veículos</h1>
-      <fieldset>
-        <legend>
-          <h3>Cadastrar Veículo</h3>
-        </legend>
-        <div  class="account-details">
-          <div><label>Código</label><input type="text" name="code" required></div>
-          <div><label>Descrição</label><input type="text" name="description" required></div>
-          <div><label>Modelo</label><div class="menu-block">
-            <select class="model" required>
-              <option value=""></option>
-              <option value="">Anglia</option>
-              <option value="">Bel Air</option>
-              <option value="">Chevette</option>
-              <option value="">Cobra</option>
-              <option value="">Corvette</option>
-              <option value="">Escort</option>
-              <option value="">Fiorino</option>
-              <option value="">Fusca</option>
-              <option value="">Opala Diplomata</option>
-              <option value="">Panorama</option>            
-            </select></div>
-        </div>
-          <div><label>Cor</label><div class="menu-block">
-              <select class="model" required>
-                <option value=""></option>
-                <option value="">Azul Claro</option>
-                <option value="">Azul Esuro</option>
-                <option value="">Branco</option>
-                <option value="">Cinza</option>
-                <option value="">Prata</option>
-                <option value="">Preto</option>
-                <option value="">Vermelho</option>
-              </select></div>
+      <form action="/user/create" method="POST">
+        <h1>Usuários</h1>
+        <fieldset>
+          <legend>
+            <h3>Criar Usuário</h3>
+          </legend>
+          <div  class="account-details">
+            <div><label>Código</label><input type="text" name="code" required></div>
+            <div><label>E-mail*</label><input type="text" name="email" required></div>
+            <div><label>Nome*</label><input type="text" name="name" required></div>
+            <div><label>Senha*</label><input type="password" name="password" id="passwordInput" required></div>
+            <div></div>
+            <div><input type="checkbox" onclick="showPassword()">Mostrar Senha </div>
+          </div></br>
+          <div style="text-align: right;">
+            <button type="submit" href="/">Salvar</button>
+            &nbsp;
+            <button type="reset">Limpar</button>
           </div>
-          <div><label>Ano</label><input type="text" name="year" required></div>
-          <div><label>Observações</label><input type="text" name="observation" required></div>
-        </div>
-      </br>
-        <div style="text-align: right;">
-          <button type="submit" href="/">Salvar</button>
-          &nbsp;
-          <button type="submit" href="/">Cancelar</button>
-        </div>
-      </br></br>
+        </fieldset>
+      </form>
+    </div></br></br>
+
+    <div>
       <fieldset>
         <legend>
-          <h3>Veículos Cadastrados</h3>
-        </legend>
+          <h3>Usuários Cadastrados</h3>
+        </legend></br>
         <table class="blueTable">
           <thead>
-          <tr>
-          <th>Código</th>
-          <th>Modelo</th>
-          <th>Descrição</th>
-          <th>Ano</th>
-          <th>Cor</th>
-          <th>Observação</th>
-          <th>Ação</th>
-          </tr>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th></th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-          <td>01</td>
-          <td>Anglia</td>
-          <td>4 portas, airbag dianteiro, freio ABS e usado</td>
-          <td>1939</td>
-          <td>Azul claro</td>
-          <td>Carro de colecionador</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>02</td>
-            <td>Escort</td>
-            <td>2 portas, freio ABS e usado</td>
-            <td>1980</td>
-            <td>Verde</td>
-            <td>Carro de colecionador</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>03</td>
-            <td>Cobra</td>
-            <td>2 portas, airbag dianteiro, conversível, peças originais e usado</td>
-            <td>1965</td>
-            <td>Vermelho</td>
-            <td>Carro de colecionador</td>
-            <td>
-              <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-            </td>
-            </tr>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.name %></td>
+                <td><%= details.email %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
           </tbody>
-          </table>
+        </table>
       </fieldset>
-      </fieldset>
-    </form>
-    </div> 
+    </div>
   </body>
 </html>

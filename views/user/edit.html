@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 <html>
   <head>
-    <title>Home</title>
+    <title>Usuários</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -38,12 +39,17 @@
       border: none;
       border-top: 1px solid #0E4DA4;
       }
-      .account-details >div >div {
+      .account-details, .personal-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .account-details >div, .personal-details >div >div {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
       }
-      .account-details >div, input, label {
+      .account-details >div, .personal-details >div, input, label {
       width: 100%;
       }
       label {
@@ -69,9 +75,9 @@
       button:hover {
       background: #0E4DA4;
       }
-      @media (min-width: 400px) {
-      .account-details >div {
-      width: 40%;
+      @media (min-width: 568px) {
+      .account-details >div, .personal-details >div {
+      width: 50%;
       }
       label {
       width: 40%;
@@ -137,90 +143,73 @@
       padding: 2px 8px;
       border-radius: 5px;
     }
-    </style>
+  </style>
+  <script>
+    function showPassword() {
+      var x = document.getElementById("passwordInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    } 
+  </script>
   </head>
   <body>
     <div class="main-block">
-    <form action="/">
+      <form action="/user/update" method="POST">
+        <h1>Usuários</h1>
+        <fieldset>
+          <legend>
+            <h3>Editar Usuário</h3>
+          </legend>
+          <div  class="account-details">
+            <% userDetail.forEach(function(details) { %>
+            <div><label>Código</label><input type="text" name="code" value="<%= details.code %>" required></div>
+            <div><label>E-mail*</label><input type="text" name="email" value="<%= details.email %>" required></div>
+            <div><label>Nome*</label><input type="text" name="name" value="<%= details.name %>" required></div>
+            <div><label>Senha*</label><input type="password" name="password" value="<%= details.password %>" id="passwordInput" required></div>
+            <div></div>
+            <div><input type="checkbox" onclick="showPassword()">Mostrar Senha </div>
+            <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
+            <% }) %>
+          </div></br>
+          <div style="text-align: right;">
+            <button type="submit" href="/">Salvar</button>
+            &nbsp;
+            <button type="cancel" onclick="window.location='/user';return false;">Cancel</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div>
       <fieldset>
         <legend>
-          <h3>Reservas</h3>
-        </legend>
-        <div  class="account-details">
-          <table style="margin-left: auto; margin-right: auto;">
-            <tbody>
-            <tr>
-              <th><button type="submit" formaction="/Reservation">Nova Reserva</button></th>
-              <th><button type="submit" formaction="/Brand">Marca</button></th>
-              <th><button type="submit" formaction="/Model">Modelo</button></th>
-              <th><button type="submit" formaction="/Car">Veículo</button></th>
-              <th><button type="submit" formaction="/user">Usuário</button></th>
-              <th><button type="submit" formaction="/logout" style="background-color:red">Sair</button></th>
+          <h3>Usuários Cadastrados</h3>
+        </legend></br>
+        <table class="blueTable">
+          <thead>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th></th>
+              <th></th>
             </tr>
-            </tbody>
-            </table>
-          <table class="blueTable">
-            <thead>
-            <tr>
-            <th>Usuário</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Cor</th>
-            <th>Ano</th>
-            <th>Retirada</th>
-            <th>Entrega</th>
-            <th>Observação</th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-            <td>Carlos Peres</td>
-            <td>Ford</td>
-            <td>Mustang</td>
-            <td>Preto</td>
-            <td>2020</td>
-            <td>21/11/2010</td>
-            <td>10/12/2020</td>
-            <td>Teste observação</td>
-            <td>
-              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
-            </td>
-            </tr>
-            <tr>
-            <td>Maria Antonieta Damasco</td>
-            <td>Ford</td>
-            <td>Mustang</td>
-            <td>Amarelo</td>
-            <td>2020</td>
-            <td>28/11/2010</td>
-            <td>01/12/2020</td>
-            <td>Teste observação</td>
-            <td>
-              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
-            </td>
-            </tr>
-            <tr>
-              <td>João Bosco Silva</td>
-              <td>Lamboghini</td>
-              <td>Aventador</td>
-              <td>Vermelho</td>
-              <td>2020</td>
-              <td>01/12/2010</td>
-              <td>08/12/2020</td>
-              <td>Teste observação</td>
-              <td>
-                <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-                <input type="button" id="edit_button1" value="Cancelar" class="cancel" onclick="">
-              </td>
+          </thead>
+          <tbody>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.name %></td>
+                <td><%= details.email %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
               </tr>
-            </tbody>
-            </table>
-          </div>
+            <% }) %>
+          </tbody>
+        </table>
       </fieldset>
-    </form>
-    </div> 
+    </div>
   </body>
 </html>

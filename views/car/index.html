@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Usuários</title>
+    <title>Veículos</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -146,60 +146,84 @@
   </head>
   <body>
     <div class="main-block">
-      <form action="/user/create" method="POST">
-        <h1>Usuários</h1>
-        <fieldset>
-          <legend>
-            <h3>Criar Usuário</h3>
-          </legend>
-          <div  class="account-details">
-            <div><label>Código</label><input type="text" name="code" required></div>
-            <div><label>E-mail*</label><input type="text" name="email" required></div>
-            <div><label>Nome*</label><input type="text" name="name" required></div>
-            <div><label>Senha*</label><input type="password" name="password" required></div>
-          </div></br>
-          <div style="text-align: right;">
-            <button type="submit" href="/">Salvar</button>
-            &nbsp;
-            <button type="reset">Cancelar</button>
-          </div>
-        </fieldset>
-      </form>
-    </div></br></br>
-
-    <div>
+    <form action="/">
+      <h1>Veículos</h1>
       <fieldset>
         <legend>
-          <h3>Usuários Cadastrados</h3>
-        </legend></br>
+          <h3>Cadastrar Veículo</h3>
+        </legend>
+        <div  class="account-details">
+          <div><label>Código</label><input type="text" name="code" required></div>
+          <div><label>Descrição</label><input type="text" name="description" required></div>
+          <div><label>Modelo</label><div class="menu-block">
+            <select class="model" required>
+              <option value=""></option>
+              <option value="">Anglia</option>
+              <option value="">Bel Air</option>
+              <option value="">Chevette</option>
+              <option value="">Cobra</option>
+              <option value="">Corvette</option>
+              <option value="">Escort</option>
+              <option value="">Fiorino</option>
+              <option value="">Fusca</option>
+              <option value="">Opala Diplomata</option>
+              <option value="">Panorama</option>            
+            </select></div>
+        </div>
+          <div><label>Cor</label>
+            <div class="menu-block">
+              <select class="model" required>
+                <% colors.forEach(function(color) { %>
+                  <option value="<%= color.id %>"><%= color.name %></option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div><label>Ano</label><input type="text" name="year" required></div>
+          <div><label>Observações</label><input type="text" name="observation" required></div>
+        </div>
+      </br>
+        <div style="text-align: right;">
+          <button type="submit" href="/">Salvar</button>
+          &nbsp;
+          <button type="reset">Limpar</button>
+        </div>
+      </br></br>
+      <fieldset>
+        <legend>
+          <h3>Veículos Cadastrados</h3>
+        </legend>
         <table class="blueTable">
-          <tr height="40" align="center">
-            <th>Código</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <%
-        if(userData.length!=0){
-        var i=1;
-        userData.forEach(function(data){
-        %>
-        <tr>
-            <td width="60" align="center"><%=data.code %></td>
-            <td><%=data.name %></td>
-            <td><%=data.email %></td>
-            <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%=data.id%>'" style="background-color:orange">Editar</button></td>
-            <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%=data.id%>'" style="background-color:red">Deletar</button></td>
-        </tr>
-        <%  i++; }) %>
-        <% } else { %>
-            <tr>
-                <td colspan="7">No Data Found</td>
+          <thead>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Modelo</th>
+              <th>Descrição</th>
+              <th>Ano</th>
+              <th>Cor</th>
+              <th>Observação</th>
+              <th></th>
+              <th></th>
             </tr>
-        <% } %>
+          </thead>
+          <tbody>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.model %></td>
+                <td><%= details.description %></td>
+                <td><%= details.year %></td>
+                <td><%= details.color %></td>
+                <td><%= details.observation %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/car/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/car/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
+          </tbody>
         </table>
       </fieldset>
-    </div>
+      </fieldset>
+    </form>
+    </div> 
   </body>
 </html>
