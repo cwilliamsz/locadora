@@ -145,7 +145,7 @@
     }
   </style>
   <script>
-    function myFunction() {
+    function showPassword() {
       var x = document.getElementById("passwordInput");
       if (x.type === "password") {
         x.type = "text";
@@ -170,7 +170,7 @@
             <div><label>Nome*</label><input type="text" name="name" value="<%= details.name %>" required></div>
             <div><label>Senha*</label><input type="password" name="password" value="<%= details.password %>" id="passwordInput" required></div>
             <div></div>
-            <div><input type="checkbox" onclick="myFunction()">Mostrar Senha </div>
+            <div><input type="checkbox" onclick="showPassword()">Mostrar Senha </div>
             <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
             <% }) %>
           </div></br>
