@@ -170,17 +170,14 @@
               <option value="">Panorama</option>            
             </select></div>
         </div>
-          <div><label>Cor</label><div class="menu-block">
+          <div><label>Cor</label>
+            <div class="menu-block">
               <select class="model" required>
-                <option value=""></option>
-                <option value="">Azul Claro</option>
-                <option value="">Azul Esuro</option>
-                <option value="">Branco</option>
-                <option value="">Cinza</option>
-                <option value="">Prata</option>
-                <option value="">Preto</option>
-                <option value="">Vermelho</option>
-              </select></div>
+                <% colors.forEach(function(color) { %>
+                  <option value="<%= color.id %>"><%= color.name %></option>
+                <% }) %>
+              </select>
+            </div>
           </div>
           <div><label>Ano</label><input type="text" name="year" required></div>
           <div><label>Observações</label><input type="text" name="observation" required></div>
