@@ -173,31 +173,26 @@
           <h3>Usuários Cadastrados</h3>
         </legend></br>
         <table class="blueTable">
-          <tr height="40" align="center">
-            <th>Código</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <%
-        if(userData.length!=0){
-        var i=1;
-        userData.forEach(function(data){
-        %>
-        <tr>
-            <td width="60" align="center"><%=data.code %></td>
-            <td><%=data.name %></td>
-            <td><%=data.email %></td>
-            <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%=data.id%>'" style="background-color:orange">Editar</button></td>
-            <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%=data.id%>'" style="background-color:red">Deletar</button></td>
-        </tr>
-        <%  i++; }) %>
-        <% } else { %>
-            <tr>
-                <td colspan="7">No Data Found</td>
+          <thead>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th></th>
+              <th></th>
             </tr>
-        <% } %>
+          </thead>
+          <tbody>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%=details.code %></td>
+                <td><%=details.name %></td>
+                <td><%=details.email %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%=data.id%>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%=data.id%>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
+          </tbody>
         </table>
       </fieldset>
     </div>

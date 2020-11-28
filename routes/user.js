@@ -3,12 +3,13 @@ var router = express.Router()
 
 const db = require('../config/connection')
 
+// Get
 router.get('/', function(request, response, next) {
   if (request.session.user) {
     var sql='SELECT * FROM users';
     db.query(sql, function (err, data, fields) {
       if (err) throw err;
-      response.render('user', { title: 'User List', userData: data});
+      response.render('user', { title: 'User List', data: data});
     });
   } else {
     request.session.error = 'Access denied!'
@@ -16,6 +17,7 @@ router.get('/', function(request, response, next) {
   }
 })
 
+// Insert
 router.post('/create', function(request, response) {
   if (request.session.user) {
     const user = request.body
@@ -33,7 +35,8 @@ router.post('/create', function(request, response) {
   }
 })
 
-router.get('/delete/:id', function(request, response) {
+// Delete
+router.delete('/user/:id', function(request, response) {
   if (request.session.user) {
     const userId = request.params.id
     var sql = 'DELETE FROM users WHERE id = ?'
@@ -49,5 +52,18 @@ router.get('/delete/:id', function(request, response) {
     response.redirect('/')
   }
 })
+
+// Update
+router.put('/user', (req, res) => {
+  let emp = req.body;
+  var sql = "SET @EmpID = ?;SET @Name = ?;SET @EmpCode = ?;SET @Salary = ?; \
+  CALL EmployeeAddOrEdit(@EmpID,@Name,@EmpCode,@Salary);";
+  mysqlConnection.query(sql, [emp.EmpID, emp.Name, emp.EmpCode, emp.Salary], (err, rows, fields) => {
+      if (!err)
+          res.send('Updated successfully');
+      else
+          console.log(err);
+  })
+});
 
 module.exports = router
