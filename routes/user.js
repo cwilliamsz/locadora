@@ -64,7 +64,7 @@ router.get('/edit/:id', (request, response) => {
       if (err) throw err;
         response.render('user/edit',  { title: 'Edit User', 
                                         userDetail: userDetail,
-                                        data:data
+                                        data: data
                                       });
       });
     });

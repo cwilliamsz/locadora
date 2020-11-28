@@ -144,6 +144,16 @@
       border-radius: 5px;
     }
   </style>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("passwordInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    } 
+  </script>
   </head>
   <body>
     <div class="main-block">
@@ -158,7 +168,9 @@
             <div><label>Código</label><input type="text" name="code" value="<%= details.code %>" required></div>
             <div><label>E-mail*</label><input type="text" name="email" value="<%= details.email %>" required></div>
             <div><label>Nome*</label><input type="text" name="name" value="<%= details.name %>" required></div>
-            <div><label>Senha*</label><input type="password" name="password" value="<%= details.password %>" required></div>
+            <div><label>Senha*</label><input type="password" name="password" value="<%= details.password %>" id="passwordInput" required></div>
+            <div></div>
+            <div><input type="checkbox" onclick="myFunction()">Mostrar Senha </div>
             <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
             <% }) %>
           </div></br>

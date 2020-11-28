@@ -144,6 +144,16 @@
       border-radius: 5px;
     }
   </style>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("passwordInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    } 
+  </script>
   </head>
   <body>
     <div class="main-block">
@@ -157,7 +167,9 @@
             <div><label>Código</label><input type="text" name="code" required></div>
             <div><label>E-mail*</label><input type="text" name="email" required></div>
             <div><label>Nome*</label><input type="text" name="name" required></div>
-            <div><label>Senha*</label><input type="password" name="password" required></div>
+            <div><label>Senha*</label><input type="password" name="password" id="passwordInput" required></div>
+            <div></div>
+            <div><input type="checkbox" onclick="myFunction()">Mostrar Senha </div>
           </div></br>
           <div style="text-align: right;">
             <button type="submit" href="/">Salvar</button>
