@@ -188,8 +188,8 @@
                 <td width="60" align="center"><%=details.code %></td>
                 <td><%=details.name %></td>
                 <td><%=details.email %></td>
-                <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%=data.id%>'" style="background-color:orange">Editar</button></td>
-                <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%=data.id%>'" style="background-color:red">Deletar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
               </tr>
             <% }) %>
           </tbody>

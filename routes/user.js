@@ -36,7 +36,7 @@ router.post('/create', function(request, response) {
 })
 
 // Delete
-router.delete('/user/:id', function(request, response) {
+router.get('/delete/:id', function(request, response) {
   if (request.session.user) {
     const userId = request.params.id
     var sql = 'DELETE FROM users WHERE id = ?'
@@ -54,16 +54,24 @@ router.delete('/user/:id', function(request, response) {
 })
 
 // Update
-router.put('/user', (req, res) => {
-  let emp = req.body;
-  var sql = "SET @EmpID = ?;SET @Name = ?;SET @EmpCode = ?;SET @Salary = ?; \
-  CALL EmployeeAddOrEdit(@EmpID,@Name,@EmpCode,@Salary);";
-  mysqlConnection.query(sql, [emp.EmpID, emp.Name, emp.EmpCode, emp.Salary], (err, rows, fields) => {
-      if (!err)
-          res.send('Updated successfully');
-      else
-          console.log(err);
-  })
+router.get('/edit/:id', (req, res) => {
+  if (request.session.user) {
+    const userId = request.params.id
+    // var sql = 'DELETE FROM users WHERE id = ?'
+
+    // db.query(sql, userId, function (err, result) { 
+    //     if (err) throw err
+    //       console.log("User data is deleted successfully ")
+    //       console.log(result)
+    //       response.redirect('/user')
+    // })
+
+    response.redirect('/user')
+
+  } else {
+    request.session.error = 'Access denied!'
+    response.redirect('/')
+  }
 });
 
 module.exports = router
