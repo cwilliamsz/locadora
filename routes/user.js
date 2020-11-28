@@ -54,20 +54,21 @@ router.get('/delete/:id', function(request, response) {
 })
 
 // Update
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', (request, response) => {
   if (request.session.user) {
     const userId = request.params.id
-    // var sql = 'DELETE FROM users WHERE id = ?'
-
-    // db.query(sql, userId, function (err, result) { 
-    //     if (err) throw err
-    //       console.log("User data is deleted successfully ")
-    //       console.log(result)
-    //       response.redirect('/user')
-    // })
-
-    response.redirect('/user')
-
+    var sql='SELECT * FROM users WHERE id = ?';
+    db.query(sql, userId, function (err, userDetail, fields) {
+      if (err) throw err;
+      var sqlAllUsers='SELECT * FROM users';
+      db.query(sqlAllUsers, function (err, data, fields) {
+      if (err) throw err;
+        response.render('user/edit',  { title: 'Edit User', 
+                                        userDetail: userDetail,
+                                        data:data
+                                      });
+      });
+    });
   } else {
     request.session.error = 'Access denied!'
     response.redirect('/')

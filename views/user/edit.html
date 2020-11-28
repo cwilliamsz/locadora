@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 <html>
   <head>
     <title>Usuários</title>
@@ -150,23 +151,24 @@
         <h1>Usuários</h1>
         <fieldset>
           <legend>
-            <h3>Criar Usuário</h3>
+            <h3>Editar Usuário</h3>
           </legend>
           <div  class="account-details">
-            <div><label>Código</label><input type="text" name="code" required></div>
-            <div><label>E-mail*</label><input type="text" name="email" required></div>
-            <div><label>Nome*</label><input type="text" name="name" required></div>
-            <div><label>Senha*</label><input type="password" name="password" required></div>
+            <% userDetail.forEach(function(details) { %>
+            <div><label>Código</label><input type="text" name="code" value="<%= details.code %>" required></div>
+            <div><label>E-mail*</label><input type="text" name="email" value="<%= details.email %>" required></div>
+            <div><label>Nome*</label><input type="text" name="name" value="<%= details.name %>" required></div>
+            <div><label>Senha*</label><input type="password" name="password" value="<%= details.password %>" required></div>
+            <% }) %>
           </div></br>
           <div style="text-align: right;">
             <button type="submit" href="/">Salvar</button>
             &nbsp;
-            <button type="reset">Cancelar</button>
+            <button type="cancel" onclick="window.location='/user';return false;">Cancel</button>
           </div>
         </fieldset>
       </form>
-    </div></br></br>
-
+    </div>
     <div>
       <fieldset>
         <legend>
@@ -185,9 +187,9 @@
           <tbody>
             <% data.forEach(function(details) { %>
               <tr>
-                <td width="60" align="center"><%=details.code %></td>
-                <td><%=details.name %></td>
-                <td><%=details.email %></td>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.name %></td>
+                <td><%= details.email %></td>
                 <td width="60"><button type="submit" onclick="window.location.href='/user/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
                 <td width="60"><button type="submit" onclick="window.location.href='/user/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
               </tr>
