@@ -146,17 +146,18 @@
   </head>
   <body>
     <div class="main-block">
-      <form action="/model/create" method="POST">
+      <form action="/model/update" method="POST">
       <h1>Modelos</h1>
       <fieldset>
         <legend>
-          <h3>Criar Modelos</h3>
+          <h3>Editar Modelo</h3>
             </legend>
         <div  class="account-details">
-          <div><label>Código</label><input type="text" name="code" required></div>
+          <% modelDetail.forEach(function(details) { %>
+          <div><label>Código</label><input type="text" name="code" value="<%= details.code %>" required></div>
           <div><label>Marca</label>
             <div class="menu-block">
-              <select class="brand" name="brand" required>
+              <select class="brand" name="brand" id="brand" required>
                 <option></option>
                 <% brands.forEach(function(brand) { %>
                   <option value="<%= brand.id %>"><%= brand.description %></option>
@@ -164,14 +165,19 @@
               </select>
             </div>
           </div>
-          <div><label>Descrição</label><input type="text" name="description" required></div>
+          <div><label>Descrição</label><input type="text" name="description" value="<%= details.description %>" required></div>
+          <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
+          <script>
+            document.getElementById("brand").selectedIndex = "<%= details.brand %>" 
+          </script>
+          <% }) %>
         </div>
       </br>
-        <div style="text-align: right;">
-          <button type="submit" href="/">Salvar</button>
+      <div style="text-align: right;">
+        <button type="submit" href="/">Salvar</button>
           &nbsp;
-          <button type="reset" href="/">Limpar</button>
-        </div>
+        <button type="cancel" onclick="window.location='/model';return false;">Cancel</button>
+      </div>
       </br></br>
       <fieldset>
         <legend>
