@@ -22,10 +22,9 @@ router.post('/create', function(request, response) {
   if (request.session.user) {
     const user = request.body
     var sql = 'INSERT INTO users SET ?'
-
     db.query(sql, user, function (err, result) { 
         if (err) throw err
-          console.log("User data is inserted successfully ")
+          console.log("User data is inserted successfully")
           console.log(result)
           response.redirect('/user')
     })
@@ -74,5 +73,23 @@ router.get('/edit/:id', (request, response) => {
     response.redirect('/')
   }
 });
+
+router.post('/update', function(request, response) {
+  if (request.session.user) {
+    const user = request.body
+    var id = user.id
+    delete user.id
+    var sql = 'UPDATE users SET ? WHERE id = '
+    db.query(sql + id, user, function (err, result) { 
+        if (err) throw err
+          console.log("User data is updated successfully")
+          console.log(result)
+          response.redirect('/user')
+    })
+  } else {
+    request.session.error = 'Access denied!'
+    response.redirect('/')
+  }
+})
 
 module.exports = router

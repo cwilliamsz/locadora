@@ -147,7 +147,7 @@
   </head>
   <body>
     <div class="main-block">
-      <form action="/user/create" method="POST">
+      <form action="/user/update" method="POST">
         <h1>Usuários</h1>
         <fieldset>
           <legend>
@@ -159,6 +159,7 @@
             <div><label>E-mail*</label><input type="text" name="email" value="<%= details.email %>" required></div>
             <div><label>Nome*</label><input type="text" name="name" value="<%= details.name %>" required></div>
             <div><label>Senha*</label><input type="password" name="password" value="<%= details.password %>" required></div>
+            <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
             <% }) %>
           </div></br>
           <div style="text-align: right;">
