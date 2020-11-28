@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Modelos</title>
+    <title>Brand</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -146,72 +146,47 @@
   </head>
   <body>
     <div class="main-block">
-    <form action="/">
-      <h1>Modelos</h1>
+      <form action="/brand/create" method="POST">
+      <h1>Marca</h1>
       <fieldset>
         <legend>
-          <h3>Criar Modelos</h3>
-            </legend>
+          <h3>Cadastrar Marca</h3>
+        </legend>
         <div  class="account-details">
-          <div><label>Código</label><input type="text" name="codigo do modelo" required></div>
-            <div><label>Código da marca*</label><select name="select Model">
-            <option value="Ford">Ford</option> 
-            <option value="Fiat">Fiat</option>
-            <option value="Lamborghini">Lamborghini</option>
-          </select></div>
-          <div><label>Descrição</label><input type="text" name="email2" required></div>
-          
+          <div><label>Código</label><input type="text" name="code" required></div>
+          <div><label>Descrição</label><input type="text" name="description" required></div>
         </div>
       </br>
         <div style="text-align: right;">
           <button type="submit" href="/">Salvar</button>
           &nbsp;
-          <button type="submit" href="/">Cancelar</button>
+          <button type="submit" href="/">Limpar</button>
         </div>
       </br></br>
       <fieldset>
         <legend>
-          <h3>Modelos Cadastrados</h3>
+          <h3>Brands</h3>
         </legend>
         <table class="blueTable">
           <thead>
-          <tr>
-          <th>Código</th>
-          <th>Código da Marca</th>
-          <th>Descrição</th>
-          <th></th>
-          </tr>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Descrição</th>
+              <th></th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-          <td>01</td>
-          <td>Fiat</td>
-          <td>Toro</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-          <td>02</td>
-          <td>Ford</td>
-          <td>Mustang</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>03</td>
-            <td>Lamborghini</td>
-            <td>Aventador</td>
-            <td>
-              <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-            </td>
-            </tr>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.description %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/brand/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/brand/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
           </tbody>
-          </table>
+        </table>
       </fieldset>
       </fieldset>
     </form>

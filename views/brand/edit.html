@@ -146,23 +146,24 @@
   </head>
   <body>
     <div class="main-block">
-    <form action="/">
-      <h1>Brand</h1>
+      <form action="/brand/update" method="POST">
+      <h1>Marca</h1>
       <fieldset>
         <legend>
-          <h3>Brand data</h3>
+          <h3>Editar Marca</h3>
         </legend>
         <div  class="account-details">
-          <div><label>Code</label><input type="text" name="codigo do modelo" required></div>
-          <div><label>Brand code </label><input type="text" name="codigo da MARCA" required></div>
-          <div><label>Description</label><input type="text" name="email2" required></div>
-          
+          <% brandDetail.forEach(function(details) { %>
+          <div><label>Código</label><input type="text" name="code" value="<%= details.code %>" required></div>
+          <div><label>Descrição</label><input type="text" name="description" value="<%= details.description %>" required></div>
+          <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
+          <% }) %>
         </div>
       </br>
         <div style="text-align: right;">
-          <button type="submit" href="/">Save</button>
-          &nbsp;
-          <button type="submit" href="/">Cancel</button>
+          <button type="submit" href="/">Salvar</button>
+            &nbsp;
+          <button type="cancel" onclick="window.location='/brand';return false;">Cancel</button>
         </div>
       </br></br>
       <fieldset>
@@ -171,43 +172,24 @@
         </legend>
         <table class="blueTable">
           <thead>
-          <tr>
-          <th>Code</th>
-          <th>Brand code</th>
-          <th>Description</th>
-          <th>Option 1</th>
-          </tr>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Descrição</th>
+              <th></th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-          <td>01</td>
-          <td>Ford</td>
-          <td>Ford</td>
-          <td>
-            <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Delete" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-          <td>02</td>
-          <td>Fiat</td>
-          <td>Fiat</td>
-          <td>
-            <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Delete" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>03</td>
-            <td>Lamborghini</td>
-            <td>Lamborghini</td>
-            <td>
-              <input type="button" id="edit_button1" value="Edit" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Delete" class="cancel" onclick="">
-            </td>
-            </tr>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.description %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/brand/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/brand/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
           </tbody>
-          </table>
+        </table>
       </fieldset>
       </fieldset>
     </form>

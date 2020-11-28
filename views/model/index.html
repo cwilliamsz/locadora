@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modelos</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      }
+      h1 {
+      margin: 0;
+      font-weight: 400;
+      }
+      h3 {
+      margin: 12px 0;
+      color: #0E4DA4;
+      }
+      .main-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      }
+      fieldset {
+      border: none;
+      border-top: 1px solid #0E4DA4;
+      }
+      .account-details, .personal-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .account-details >div, .personal-details >div >div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      }
+      .account-details >div, .personal-details >div, input, label {
+      width: 100%;
+      }
+      label {
+      padding: 0 5px;
+      text-align: right;
+      vertical-align: middle;
+      }
+      input {
+      padding: 5px;
+      vertical-align: middle;
+      }
+      button {
+      width: 200px;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px; 
+      border: none;
+      background: #0E4DA4; 
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #0E4DA4;
+      }
+      @media (min-width: 568px) {
+      .account-details >div, .personal-details >div {
+      width: 50%;
+      }
+      label {
+      width: 40%;
+      }
+      input {
+      width: 60%;
+      }
+      }
+      table.blueTable {
+      border: 1px solid #1C6EA4;
+      background-color: #EEEEEE;
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+    }
+    table.blueTable td, table.blueTable th {
+      border: 1px solid #AAAAAA;
+      padding: 3px 2px;
+    }
+    table.blueTable tbody td {
+      font-size: 13px;
+    }
+    table.blueTable tr:nth-child(even) {
+      background: #D0E4F5;
+    }
+    table.blueTable thead {
+      background: #0E4DA4;
+      background: -moz-linear-gradient(top, #0E4DA4);
+      background: -webkit-linear-gradient(top, #0E4DA4);
+      background: linear-gradient(to bottom, #0E4DA4);
+      border-bottom: 2px solid #444444;
+    }
+    table.blueTable thead th {
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      border-left: 2px solid #D0E4F5;
+    }
+    table.blueTable thead th:first-child {
+      border-left: none;
+    }
+
+    table.blueTable tfoot {
+      font-size: 14px;
+      font-weight: bold;
+      color: #FFFFFF;
+      background: #D0E4F5;
+      background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+      border-top: 2px solid #444444;
+    }
+    table.blueTable tfoot td {
+      font-size: 14px;
+    }
+    table.blueTable tfoot .links {
+      text-align: right;
+    }
+    table.blueTable tfoot .links a{
+      display: inline-block;
+      background: #1C6EA4;
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <form action="/model/create" method="POST">
+      <h1>Modelos</h1>
+      <fieldset>
+        <legend>
+          <h3>Criar Modelos</h3>
+            </legend>
+        <div  class="account-details">
+          <div><label>Código</label><input type="text" name="code" required></div>
+          <div><label>Marca</label>
+            <div class="menu-block">
+              <select class="brand" name="brand" required>
+                <% brands.forEach(function(brand) { %>
+                  <option value="<%= brand.id %>"><%= brand.description %></option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div><label>Descrição</label><input type="text" name="description" required></div>
+        </div>
+      </br>
+        <div style="text-align: right;">
+          <button type="submit" href="/">Salvar</button>
+          &nbsp;
+          <button type="reset" href="/">Limpar</button>
+        </div>
+      </br></br>
+      <fieldset>
+        <legend>
+          <h3>Modelos Cadastrados</h3>
+        </legend>
+        <table class="blueTable">
+          <thead>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Descrição</th>
+              <th>Marca</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.description %></td>
+                <td><%= details.brand %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/model/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/model/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </fieldset>
+      </fieldset>
+    </form>
+    </div> 
+  </body>
+</html>
