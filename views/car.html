@@ -25,9 +25,10 @@
         }
         main{
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0 auto;
             padding-top: 30px;
+            padding-bottom: 50px;
         }
         h1 { 
             font-weight: 400; 
@@ -217,33 +218,37 @@
 
                 <form action="">
                     <div class="fields-container">
-                        <div class="input-group">
-                            <label>Código</label>
-                            <input type="text" name="code" required>
+                        <div class="fields-container">
+                            <div class="input-group">
+                                <label>Código</label>
+                                <input type="text" name="code" required>
+                            </div>
+                        </div>
+
+                        <div class="fields-container">
+                            <div class="input-group">
+                                <select name="select_model" class="select_model">
+                                    <option value="">Selecione um Modelo</option>
+                                    <option value="Anglia">Anglia</option>
+                                    <option value="Bel Air">Bel Air</option>
+                                    <option value="Chevette">Chevette</option>
+                                    <option value="Cobra">Cobra</option>
+                                    <option value="Corvette">Corvette</option>
+                                    <option value="Escort">Escort</option>
+                                    <option value="Fiorino">Fiorino</option>
+                                    <option value="Fusca">Fusca</option>
+                                    <option value="Opala Diplomata">Opala Diplomata</option>
+                                    <option value="Panorama">Panorama</option>         
+                                </select>
+                            </div>
                         </div>
                     </div>
+
 
                     <div class="fields-container">
                         <div class="input-group">
-                            <select name="select_model" class="select_model">
-                                <option value="">Selecione um Modelo</option>
-                                <option value="Anglia">Anglia</option>
-                                <option value="Bel Air">Bel Air</option>
-                                <option value="Chevette">Chevette</option>
-                                <option value="Cobra">Cobra</option>
-                                <option value="Corvette">Corvette</option>
-                                <option value="Escort">Escort</option>
-                                <option value="Fiorino">Fiorino</option>
-                                <option value="Fusca">Fusca</option>
-                                <option value="Opala Diplomata">Opala Diplomata</option>
-                                <option value="Panorama">Panorama</option>         
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="fields-container full-width">
-                        <div class="input-group">
-                            <textarea name="description" placeholder="Descrição"></textarea>
+                            <label>Descrição</label>
+                            <input type="text" name="description" required>
                         </div>
                     </div>
 
