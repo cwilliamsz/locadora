@@ -189,7 +189,7 @@
         <div style="text-align: right;">
           <button type="submit" href="/">Salvar</button>
           &nbsp;
-          <button type="submit" href="/">Cancelar</button>
+          <button type="reset">Limpar</button>
         </div>
       </br></br>
       <fieldset>
@@ -198,55 +198,32 @@
         </legend>
         <table class="blueTable">
           <thead>
-          <tr>
-          <th>Código</th>
-          <th>Modelo</th>
-          <th>Descrição</th>
-          <th>Ano</th>
-          <th>Cor</th>
-          <th>Observação</th>
-          <th>Ação</th>
-          </tr>
+            <tr height="40" align="center">
+              <th>Código</th>
+              <th>Modelo</th>
+              <th>Descrição</th>
+              <th>Ano</th>
+              <th>Cor</th>
+              <th>Observação</th>
+              <th></th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-          <td>01</td>
-          <td>Anglia</td>
-          <td>4 portas, airbag dianteiro, freio ABS e usado</td>
-          <td>1939</td>
-          <td>Azul claro</td>
-          <td>Carro de colecionador</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>02</td>
-            <td>Escort</td>
-            <td>2 portas, freio ABS e usado</td>
-            <td>1980</td>
-            <td>Verde</td>
-            <td>Carro de colecionador</td>
-          <td>
-            <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-            <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-          </td>
-          </tr>
-          <tr>
-            <td>03</td>
-            <td>Cobra</td>
-            <td>2 portas, airbag dianteiro, conversível, peças originais e usado</td>
-            <td>1965</td>
-            <td>Vermelho</td>
-            <td>Carro de colecionador</td>
-            <td>
-              <input type="button" id="edit_button1" value="Editar" class="edit" onclick="">
-              <input type="button" id="edit_button1" value="Excluir" class="cancel" onclick="">
-            </td>
-            </tr>
+            <% data.forEach(function(details) { %>
+              <tr>
+                <td width="60" align="center"><%= details.code %></td>
+                <td><%= details.model %></td>
+                <td><%= details.description %></td>
+                <td><%= details.year %></td>
+                <td><%= details.color %></td>
+                <td><%= details.observation %></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/car/edit/<%= details.id %>'" style="background-color:orange">Editar</button></td>
+                <td width="60"><button type="submit" onclick="window.location.href='/car/delete/<%= details.id %>'" style="background-color:red">Deletar</button></td>
+              </tr>
+            <% }) %>
           </tbody>
-          </table>
+        </table>
       </fieldset>
       </fieldset>
     </form>
