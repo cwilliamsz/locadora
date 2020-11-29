@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <style type="text/css">
+    	*{
+    		padding: 0;
+    		margin: 0;
+    		outline: none;
+    		font-family: Roboto, Arial, sans-serif;
+		    font-size: 14px;
+		    color: #666;
+    	}
+    	.main-block{
+    		width: 280px;
+    		margin: 0 auto;
+    		display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    height: 50vh;
+    	}
+    	fieldset{
+    		border: none;
+    		border-top: solid 1px #0E4DA4;
+
+    	}
+    	fieldset h3{
+    		margin: 0 5px;
+    		color: #0E4DA4;
+    	}
+    	legend{
+    		margin-bottom: 30px;
+    		margin-left: 10px;
+    	}
+    	input{
+    		padding: 15px 5px 5px 5px;
+    		width: 96%;
+    		margin-bottom: 10px;
+    		border-radius: 4px;
+    		border: solid 1px #ccc;
+    	}
+    	.input-group{
+    		position: relative;
+    	}
+    	.input-group label{
+    		position: absolute;
+    		top: 3px;
+    		left: 5px;
+    		font-size: 10px;
+    		color: #999;
+    	}
+    	.input-group button{
+    		width: 200px;
+	        padding: 10px 0;
+	        margin: 0 auto;
+	        display: block;
+	        border-radius: 5px; 
+	        border: none;
+	        background: #0E4DA4; 
+	        font-size: 14px;
+	        font-weight: 600;
+	        color: #fff;
+	        cursor: pointer;
+	        margin-top: 10px;
+    	}
+    	.input-group button:hover{
+    		background: #0E4DA4;
+    	}
+
+    	@media screen and (min-width: 375px){
+    		.main-block{
+    			width: 320px;
+    		}
+    	}
+    </style>
+</head>
+<body>
+
+	<div class="main-block">
+		
+		<form action="/login" method="POST">
+			
+			<fieldset>
+				<legend>
+					<h3>Acessar minha conta</h3>
+				</legend>
+
+				<div class="input-group">
+					<label>E-mail</label>
+					<input type="text" name="username" required>
+				</div>
+				<div class="input-group">
+					<label>Senha</label>
+					<input type="password" name="password" required>
+				</div>
+				<div class="input-group">
+					<button type="submit">Login</button>
+				</div>
+				
+			</fieldset>
+
+		</form>
+
+	</div>
+	
+</body>
+</html>

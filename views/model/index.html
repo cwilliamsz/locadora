@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos</title>
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style type="text/css">
+      *{
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            color: #666;
+        }
+        body{
+            padding: 15px;
+        }
+        a{
+            text-decoration: none;
+        }
+        main{
+            width: 100%;
+            height: 100vh;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+        h1 { 
+            font-weight: 400; 
+            margin-bottom: 50px;
+        }
+        fieldset{
+            border: none;
+            border-top: solid 1px #0E4DA4;
+        }
+        legend{
+            margin-bottom: 30px;
+            margin-left: 10px;
+        }
+        input{
+            padding: 15px 5px 5px 5px;
+            width: 100%;
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            box-sizing: border-box;
+        }
+        .fields-container{
+            width: 100%;
+            float: left;
+        }
+        .input-group{
+            position: relative;
+            margin: 7px 5px;
+        }
+        .input-group label{
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            font-size: 10px;
+            color: #999;
+        }
+        .input-group.controls{
+            text-align: right;
+            padding-right: 10px;
+        }
+        fieldset.add-users button{
+            width: 49%;
+            padding: 10px 0;
+            border-radius: 5px; 
+            border: none;
+            background: #0E4DA4; 
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;            
+        }
+
+        fieldset.list-users{
+            margin-top: 50px;
+        }
+        textarea{
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            width: 100%;
+            min-height: 70px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .full-width{
+            width: 100%;
+        }
+
+
+        .btn-edit{
+            color: #11ab16;
+            margin: 0 5px;
+        }
+        .btn-delete{
+            color: #d40505;
+            margin: 0 5px;
+        }
+
+        .float-right{
+            float: right;
+        }
+
+        .btn-voltar{
+            float: right;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        .list-brands{
+            margin-top: 40px;
+        }
+
+
+        table.blueTable {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 13px;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+        table.blueTable thead {
+            background: #0E4DA4;
+            background: -moz-linear-gradient(top, #0E4DA4);
+            background: -webkit-linear-gradient(top, #0E4DA4);
+            background: linear-gradient(to bottom, #0E4DA4);
+            border-bottom: 2px solid #444444;
+        }
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+        table .controls{
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        select{
+            border: solid 1px #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 9px 0;
+        }
+
+        @media screen and (min-width: 1024px) {
+            main{
+                width: 960px;
+            }
+            .fields-container{
+                width: 50%;
+            }
+            .full-width{
+                width: 100%;
+            }
+        }
+
+  </style>
+</head>
+<body>
+
+    <main>
+
+        <h1>Modelos <a href="/" class="btn-voltar"><i class="fa fa-reply"></i> Voltar</a></h1>
+
+        <fieldset class="add-users">
+            <legend>
+                <h3>Cadastrar Modelo</h3>
+            </legend>
+
+              <form action="/model/create" method="POST">
+
+                    <div class="fields-container">
+                        <div class="fields-container">
+                            <div class="input-group">
+                                <label>Código</label>
+                                <input type="text" name="code" required>
+                            </div>
+                        </div>
+                        <div class="fields-container">
+                            <div class="input-group">
+                                <select name="brand" class="select_model">
+                                  <option value="">Selecione uma Marca</option>
+                                  <% brands.forEach(function(brand) { %>
+                                    <option value="<%= brand.id %>"><%= brand.description %></option>
+                                  <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <label>Descrição</label>
+                            <input type="text" name="description" required>
+                        </div>
+                    </div>
+
+
+                    <div class="fields-container float-right">
+                        <div class="input-group"></div>
+                        <div class="input-group controls">
+                            <button type="submit" href="/">Salvar</button>
+                            <button type="reset">Limpar</button>
+                        </div>
+                    </div>
+                </form>
+        </fieldset>
+
+        <fieldset class="list-brands">
+            <legend>
+                <h3>Modelos Cadastrados</h3>
+            </legend>
+
+            <table class="blueTable">
+                <thead>
+                    <tr>
+                        <th width="50">Código</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th width="70"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% data.forEach(function(details) { %>
+                  <%  %>
+                    <tr>
+                      <td width="60" align="center"><%= details.model_code %></td>
+                      <td><%= details.model %></td>
+                      <td><%= details.brand %></td>
+                      <td>
+                          <div class="controls">
+                              <a href="javascript:void(0)" onclick="window.location.href='/model/edit/<%=details.id%>'">
+                                  <i class="fa fa-pencil btn-edit" title="Editar"></i>
+                              </a>
+      
+                              <a href="javascript:void(0)" onclick="window.location.href='/model/delete/<%=details.id%>'">
+                                  <i class="fa fa-trash btn-delete" title="Excluir"></i>
+                              </a>
+                          </div>
+                      </td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+            </table>
+        </fieldset>
+
+    </main>
+
+</body>
+</html>
