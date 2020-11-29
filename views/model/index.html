@@ -261,17 +261,18 @@
             <table class="blueTable">
                 <thead>
                     <tr>
-                        <th width="50">Code</th>
-                        <th>Brand code</th>
-                        <th>Description</th>
+                        <th width="50">Código</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
                         <th width="70"></th>
                     </tr>
                 </thead>
                 <tbody>
                   <% data.forEach(function(details) { %>
+                  <%  %>
                     <tr>
-                      <td width="60" align="center"><%= details.code %></td>
-                      <td><%= details.description %></td>
+                      <td width="60" align="center"><%= details.model_code %></td>
+                      <td><%= details.model %></td>
                       <td><%= details.brand %></td>
                       <td>
                           <div class="controls">
