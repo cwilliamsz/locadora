@@ -7,7 +7,8 @@ const db = require('../config/connection')
 router.get('/', function(request, response, next) {
   if (request.session.user) {
     
-    var sql='SELECT * FROM models';
+    // var sql='SELECT * FROM models';
+    var sql='SELECT m.id, m.code as model_code, m.description as model, m.brand as brand_code, b.description as brand FROM models m JOIN brands b ON b.id = m.brand';
     db.query(sql, function (err, models, fields) {
       if (err) throw err;
       
