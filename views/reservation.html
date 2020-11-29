@@ -1,199 +1,329 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Reserva</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <style>
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, p { 
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      }
-      h1 {
-      margin: 0;
-      font-weight: 400;
-      }
-      h3 {
-      margin: 12px 0;
-      color: #0E4DA4;
-      }
-      .main-block {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fff;
-      }
-      form {
-      width: 100%;
-      padding: 20px;
-      }
-      fieldset {
-      border: none;
-      border-top: 1px solid #0E4DA4;
-      }
-      .account-details, .personal-details {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      }
-      .account-details >div, .personal-details >div >div {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      }
-      .account-details >div, .personal-details >div, input, label {
-      width: 100%;
-      }
-      label {
-      padding: 0 5px;
-      text-align: right;
-      vertical-align: middle;
-      }
-      input {
-      padding: 5px;
-      vertical-align: middle;
-      }
-      .checkbox {
-      margin-bottom: 10px;
-      }
-      select, .children, .gender, .menu-block {
-      width: calc(100% + 26px);
-      padding: 5px 0;
-      }
-      select {
-      background: transparent;
-      }
-      .gender input {
-      width: auto;
-      } 
-      .gender label {
-      padding: 0 5px 0 0;
-      } 
-      .menu-block {
-      display: flex;
-      justify-content: space-between;
-      }
-      .menu input {
-      width: 40px;
-      vertical-align: unset;
-      }
-      .checkbox input, .children input {
-      width: auto;
-      margin: -2px 10px 0 0;
-      }
-      .checkbox a {
-      color: #0E4DA4;
-      }
-      .checkbox a:hover {
-      color: #0E4DA4;
-      }
-      button {
-      width: 200px;
-      padding: 10px 0;
-      margin: 10px auto;
-      border-radius: 5px; 
-      border: none;
-      background: #0E4DA4; 
-      font-size: 14px;
-      font-weight: 600;
-      color: #fff;
-      }
-      button:hover {
-      background: #0E4DA4;
-      }
-      @media (min-width: 568px) {
-      .account-details >div, .personal-details >div {
-      width: 60%;
-      }
-      label {
-      width: 20%;
-      }
-      input {
-      width: 80%;
-      }
-      select, .children, .gender, .menu-block {
-      width: 200px;
-      }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="main-block">
-    <form action="/">
-      <h1>Cadastrar nova reserva</h1>
-      <fieldset>
-        <legend>
-          <h3>Responsável pela reserva</h3>
-        </legend>
-        <div  class="account-details">
-          <div><label>Código*</label><input type="text" name="user_code" required></div>
-          <div><label>Nome*</label><input type="text" name="name" required></div>
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <h3>Dados da reserva</h3>
-        </legend>
-        <div  class="personal-details">
-          <div>
-            <div class="menu">
-              <label>Marca*</label>
-              <div class="menu-block">
-                <select class="brand" required>
-                  <option value=""></option>
-                  <option value="">Ford</option>
-                  <option value="">Lamborghini</option>
-                </select>
-              </div>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reserva</title>
 
-              <label>Modelo*</label>
-              <div class="menu-block">
-                <select class="model" required>
-                  <option value=""></option>
-                  <option value="">Mustang</option>
-                  <option value="">Aventador</option>
-                </select>
-              </div>
-            </div>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-            <div class="menu">
-              <label>Ano*</label>
-              <div class="menu-block">
-                <select class="year" required>
-                  <option value=""></option>
-                  <option value="">Ford</option>
-                  <option value="">Lamborghini</option>
-                </select>
-              </div>
+	<style>
+		*{
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            color: #666;
+        }
+        body{
+            padding: 15px;
+        }
+        a{
+            text-decoration: none;
+        }
+        main{
+            width: 100%;
+            height: 100vh;
+            margin: 0 auto;
+            padding-top: 30px;
+        }
+        h1 { 
+            font-weight: 400; 
+            margin-bottom: 50px;
+        }
+        fieldset{
+            border: none;
+            border-top: solid 1px #0E4DA4;
+        }
+        legend{
+            margin-bottom: 30px;
+            margin-left: 10px;
+        }
+        input{
+            padding: 15px 5px 5px 5px;
+            width: 100%;
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            box-sizing: border-box;
+        }
+        .fields-container{
+            width: 100%;
+            float: left;
+        }
+        .input-group{
+            position: relative;
+            margin: 7px 5px;
+        }
+        .input-group label{
+            position: absolute;
+            top: 3px;
+            left: 5px;
+            font-size: 10px;
+            color: #999;
+        }
+        .input-group.controls{
+            text-align: right;
+            padding-right: 10px;
+        }
+        fieldset.add-reservation button{
+            width: 49%;
+            padding: 10px 0;
+            border-radius: 5px; 
+            border: none;
+            background: #0E4DA4; 
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;            
+        }
 
-              <label>Cor*</label>
-              <div class="menu-block">
-                <select class="color" required>
-                  <option value=""></option>
-                  <option value="">Mustang</option>
-                  <option value="">Aventador</option>
-                </select>
-              </div>
-            </div>
-            <div><label>Retirada*</label><input type="date" name="date_start" required></div>
-            <div><label>Devolução*</label><input type="date" name="date_finish" required></div>
-            <div><label>Valor total</label><input type="text" name="reservationValue" required></div>
-            <div><label>Observações</label><input type="text" name="reservationValue"></div>
-          </div>
-          <div style="text-align: right;"">
-            <button type="submit" href="/">Reservar</button>
-            &nbsp;
-            <button type="cancel" onclick="window.location='/home';return false;">Cancelar</button>
-          </div>
-      </fieldset>
-    </form>
-    </div> 
-  </body>
+        textarea{
+            border-radius: 4px;
+            border: solid 1px #ccc;
+            width: 100%;
+            min-height: 70px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .full-width{
+            width: 100%;
+        }
+
+
+        .btn-edit{
+            color: #11ab16;
+            margin: 0 5px;
+        }
+        .btn-delete{
+            color: #d40505;
+            margin: 0 5px;
+        }
+
+        .float-right{
+            float: right;
+        }
+
+        .btn-voltar{
+            float: right;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        .list-brands{
+            margin-top: 40px;
+        }
+
+
+        table.blueTable {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 13px;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+        table.blueTable thead {
+            background: #0E4DA4;
+            background: -moz-linear-gradient(top, #0E4DA4);
+            background: -webkit-linear-gradient(top, #0E4DA4);
+            background: linear-gradient(to bottom, #0E4DA4);
+            border-bottom: 2px solid #444444;
+        }
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+        table .controls{
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        select{
+            border: solid 1px #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 9px 0;
+        }
+
+        .reservation-data{
+        	margin-bottom: 50px;
+        }
+
+        @media screen and (min-width: 1024px) {
+            main{
+                width: 960px;
+            }
+            .fields-container{
+                width: 50%;
+            }
+            .full-width{
+                width: 100%;
+            }
+        }
+
+	</style>
+</head>
+<body>
+	
+	<main>
+
+		<h1>Cadastrar Nova Reserva <a href="javascript:history.back()" class="btn-voltar"><i class="fa fa-reply"></i> Voltar</a></h1>
+
+		<fieldset class="reservation-data">
+            <legend>
+                <h3>Responsável pela Reserva</h3>
+            </legend>
+
+                <div class="fields-container">
+                    <div class="input-group">
+                        <label>Código</label>
+                        <input type="text" name="code" required>
+                    </div>
+                </div>
+
+                <div class="fields-container">
+                    <div class="input-group">
+                        <label>Nome</label>
+                        <input type="text" name="name" required>
+                    </div>
+                </div>
+
+        </fieldset>
+
+
+        <fieldset class="add-reservation">
+            <legend>
+                <h3>Dados da Reserva</h3>
+            </legend>
+
+                <form action="">
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <select name="select_model" class="select_model">
+                                <option value="">Selecione uma Marca</option>
+                                <option value="Ford">Ford</option> 
+                                <option value="Fiat">Fiat</option>
+                                <option value="Lamborghini">Lamborghini</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <select name="select_model" class="select_model">
+                                <option value="">Selecione um Modelo</option>
+                                <option value="Ford">Ford</option> 
+                                <option value="Fiat">Fiat</option>
+                                <option value="Lamborghini">Lamborghini</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <select name="select_model" class="select_model">
+                                <option value="">Selecione um Ano</option>
+                                <option value="2020">2020</option> 
+                                <option value="2019">2019</option> 
+                                <option value="2018">2018</option> 
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <select name="select_model" class="select_model">
+                                <option value="">Selecione uma Cor</option>
+                                <option value="Azul">Azul</option> 
+                                <option value="Branco">Branco</option> 
+                                <option value="Preto">Preto</option> 
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <label>Retirada*</label>
+                            <input type="date" name="total" required>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <label>Devolução*</label>
+                            <input type="date" name="total" required>
+                        </div>
+                    </div>
+
+                    <div class="fields-container">
+                        <div class="input-group">
+                            <label>Valor Total</label>
+                            <input type="text" name="total" required>
+                        </div>
+                    </div>
+
+                    <div class="fields-container full-width">
+                        <div class="input-group">
+                            <label>Observações</label>
+                            <textarea name="observation"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="fields-container float-right">
+                        <div class="input-group"></div>
+                        <div class="input-group controls">
+                            <button type="submit" href="/">Salvar</button>
+                            <button type="reset">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+        </fieldset>
+
+	</main>
+
+
+</body>
 </html>
