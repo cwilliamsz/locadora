@@ -165,6 +165,11 @@
 	    	margin-top: 15px;
 	    }
 
+	    input[type=checkbox]{
+	    	width: initial;
+	    	margin-right: 5px;
+	    }
+
 		@media screen and (min-width: 1024px) {
 			main{
 				width: 960px;
@@ -219,8 +224,10 @@
 						<div class="input-group">
 							<label>Senha*</label>
 							<input type="password" name="password" id="passwordInput" value="<%= details.password %>" required>
-              <div><input type="checkbox" onclick="showPassword()">Mostrar Senha </div>
-              <div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
+              				<div>
+              					<input type="checkbox" onclick="showPassword()">Mostrar Senha 
+              				</div>
+              				<div><input type="hidden" id="id" name="id" value="<%= details.id %>" required></div>
 						</div>
 					</div>
           <% }) %>
