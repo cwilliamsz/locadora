@@ -6,9 +6,11 @@ const db = require('../config/connection')
 // Get
 router.get('/', function(request, response, next) {
   if (request.session.user) {
+    
     var sql='SELECT * FROM models';
     db.query(sql, function (err, models, fields) {
       if (err) throw err;
+      
       var sqlBrands='SELECT * FROM brands';
       db.query(sqlBrands, function (err, brands, fields) {
         if (err) throw err;
@@ -28,7 +30,7 @@ router.get('/', function(request, response, next) {
 router.post('/create', function(request, response) {
   if (request.session.user) {
     const model = request.body
-    console.log('model:', model)
+    
     var sql = 'INSERT INTO models SET ?'
     db.query(sql, model, function (err, result) { 
         if (err) throw err
@@ -46,8 +48,8 @@ router.post('/create', function(request, response) {
 router.get('/delete/:id', function(request, response) {
   if (request.session.user) {
     const modelId = request.params.id
+    
     var sql = 'DELETE FROM models WHERE id = ?'
-
     db.query(sql, modelId, function (err, result) { 
         if (err) throw err
           console.log("model data is deleted successfully ")
@@ -64,16 +66,24 @@ router.get('/delete/:id', function(request, response) {
 router.get('/edit/:id', (request, response) => {
   if (request.session.user) {
     const modelId = request.params.id
+    
     var sql='SELECT * FROM models WHERE id = ?';
     db.query(sql, modelId, function (err, modelDetail, fields) {
       if (err) throw err;
-      var sqlAllmodels='SELECT * FROM models';
-      db.query(sqlAllmodels, function (err, data, fields) {
-      if (err) throw err;
-        response.render('model/edit',  { title: 'Edit model', 
-                                        modelDetail: modelDetail,
-                                        data: data
-                                      });
+      
+      var sqlAllModels='SELECT * FROM models';
+      db.query(sqlAllModels, function (err, data, fields) {
+        if (err) throw err;
+        
+        var sqlAllBrands='SELECT * FROM brands';
+        db.query(sqlAllBrands, function (err, brands, fields) {
+        if (err) throw err;
+          response.render('model/edit',  { title: 'Edit model', 
+                                          modelDetail: modelDetail,
+                                          data: data,
+                                          brands: brands
+                                        });
+        });
       });
     });
   } else {
@@ -85,9 +95,9 @@ router.get('/edit/:id', (request, response) => {
 router.post('/update', function(request, response) {
   if (request.session.user) {
     const model = request.body
-    console.log('model', model)
     var id = model.id
     delete model.id
+    
     var sql = 'UPDATE models SET ? WHERE id = '
     db.query(sql + id, model, function (err, result) { 
         if (err) throw err
